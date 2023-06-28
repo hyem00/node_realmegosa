@@ -38,7 +38,7 @@ router.post("/users", async (req, res) => {
     }
 
     const hashPassword = await bcrypt.hash(req.body.login_password, 5);
-    const user = await Users.create({ login_id, login_password : hashPassword });
+    const user = await Users.create({ login_id, login_password: hashPassword });
     if (!user) {
       res.status(401).json({ Message: "create false" });
     }
@@ -57,8 +57,8 @@ router.post("/login", async (req, res) => {
   // 1. 해당하는 사용자가 존재하는가
   // 2. 해당하는 사용자의 비밀번호가 존재하는가.
   if (!user) {
-    return res.status(401).json({ message: "존재하지 않는 이메일입니다." });
-  } 
+    return res.status(401).json({ message: "존재하지 않는 아이디입니다." });
+  }
   const match = await bcrypt.compare(login_password, user.login_password);
   if (!match) {
     return res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
@@ -77,11 +77,13 @@ router.post("/login", async (req, res) => {
 });
 
 //로그아웃
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   try {
-      return res.clearCookie('Authorization').json({ message: "로그아웃 성공하였습니다." });
+    return res
+      .clearCookie("Authorization")
+      .json({ message: "로그아웃 성공하였습니다." });
   } catch (err) {
-      return res.status(400).json({ errorMessage: "로그아웃 실패하였습니다." });
+    return res.status(400).json({ errorMessage: "로그아웃 실패하였습니다." });
   }
 });
 
