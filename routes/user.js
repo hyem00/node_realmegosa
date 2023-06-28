@@ -3,6 +3,7 @@ const router = express.Router();
 const { Users } = require("../models");
 const { Users_profiles } = require("../models");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 // 회원 가입
 router.post("/users", async (req, res) => {
@@ -36,7 +37,8 @@ router.post("/users", async (req, res) => {
       return;
     }
 
-    const user = await Users.create({ login_id, login_password });
+    const hashPassword = await bcrypt.hash(req.body.login_password, 5);
+    const user = await Users.create({ login_id, login_password: hashPassword });
     if (!user) {
       res.status(401).json({ Message: "create false" });
     }
@@ -56,7 +58,9 @@ router.post("/login", async (req, res) => {
   // 2. 해당하는 사용자의 비밀번호가 존재하는가.
   if (!user) {
     return res.status(401).json({ message: "존재하지 않는 아이디입니다." });
-  } else if (user.login_password !== login_password) {
+  }
+  const match = await bcrypt.compare(login_password, user.login_password);
+  if (!match) {
     return res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
   }
   // jwt를 생성
@@ -70,6 +74,17 @@ router.post("/login", async (req, res) => {
   res.cookie("Authorization", `Bearer ${token}`);
   // response 할당
   return res.status(200).json({ token });
+});
+
+//로그아웃
+router.get("/logout", (req, res) => {
+  try {
+    return res
+      .clearCookie("Authorization")
+      .json({ message: "로그아웃 성공하였습니다." });
+  } catch (err) {
+    return res.status(400).json({ errorMessage: "로그아웃 실패하였습니다." });
+  }
 });
 
 // 사용자 조회

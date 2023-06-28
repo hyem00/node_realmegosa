@@ -29,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       login_type: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       login_id: {
