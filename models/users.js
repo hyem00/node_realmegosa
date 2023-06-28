@@ -29,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       login_type: {
-
         type: DataTypes.INTEGER,
       },
       login_id: {
