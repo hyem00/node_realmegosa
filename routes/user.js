@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
+const { Users_profiles } = require("../models");
 const jwt = require("jsonwebtoken");
 
 // 회원 가입
@@ -61,30 +62,30 @@ router.post("/login", async (req, res) => {
   // jwt를 생성
   const token = jwt.sign(
     {
-      userId: user.userId,
+      user_id: user.user_id,
     },
     "customized_secret_key"
   );
   // 쿠키를 발급
-  res.cookie("authorization", `Bearer ${token}`);
+  res.cookie("Authorization", `Bearer ${token}`);
   // response 할당
-  return res.status(200).json({ message: "로그인 성공" });
+  return res.status(200).json({ token });
 });
 
 // 사용자 조회
-router.get("/users/:userId", async (req, res) => {
-  const { userId } = req.params;
+router.get("/users/:user_id", async (req, res) => {
+  const { user_id } = req.params;
 
   // 사용자 테이블과 사용자 정보 테이블에 있는 데이터를 가지고 와야함.
   const user = await Users.findOne({
-    attributes: ["userId", "login_id", "createdAt", "updatedAt"],
+    attributes: ["user_id", "login_id"],
     include: [
       {
         model: Users_profiles, // 1:1 관계를 맺고있는 UserInfos 테이블을 조회합니다.
         attributes: ["user_id", "image_url", "nickname", "comment"],
       },
     ],
-    where: { userId },
+    where: { user_id },
   });
 
   return res.status(200).json({ data: user });
