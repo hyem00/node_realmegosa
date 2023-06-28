@@ -30,7 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       image_url: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       nickname: {
         type: DataTypes.STRING,
@@ -38,10 +37,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       comment: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     {
+      timestamps: false,
       sequelize,
       modelName: "Users_profiles",
     }

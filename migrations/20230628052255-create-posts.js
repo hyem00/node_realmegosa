@@ -11,7 +11,7 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        unique: true, // UNIQUE
+        // unique: true, // UNIQUE
         references: {
           model: "Users", // Users 모델을 참조합니다.
           key: "user_id", // Users 모델의 userId를 참조합니다.

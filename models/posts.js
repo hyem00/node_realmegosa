@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       user_id: {
         type: DataTypes.INTEGER,
-        unique: true, // UNIQUE
+        // unique: true, // UNIQUE
       },
       title: {
         type: DataTypes.STRING,
@@ -37,21 +37,25 @@ module.exports = (sequelize, DataTypes) => {
       },
       category: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       foodtype: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
+      // nickname: {
+      //   type: DataTypes.STRING,
+      //   // allowNull: false,
+      // },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: sequelize.fn("now"),
+        defaultValue: DataTypes.NOW,
       },
       updatedAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: sequelize.fn("now"),
+        defaultValue: DataTypes.NOW,
       },
     },
     {
