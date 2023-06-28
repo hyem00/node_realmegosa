@@ -32,7 +32,7 @@ router.post("/users", async (req, res) => {
     const existsUsers = await Users.findOne({ where: { login_id: login_id } });
     if (existsUsers) {
       res.status(400).json({
-        errorMessage: "이미 존재하는 닉네임입니다.",
+        errorMessage: "이미 존재하는 아이디입니다.",
       });
       return;
     }
