@@ -30,7 +30,7 @@ router.post("/users", async (req, res) => {
     const existsUsers = await Users.findOne({ where: { login_id: login_id } });
     if (existsUsers) {
       res.status(400).json({
-        errorMessage: "이미 존재하는 닉네임입니다.",
+        errorMessage: "이미 존재하는 아이디입니다.",
       });
       return;
     }
@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
   // 1. 해당하는 사용자가 존재하는가
   // 2. 해당하는 사용자의 비밀번호가 존재하는가.
   if (!user) {
-    return res.status(401).json({ message: "존재하지 않는 이메일입니다." });
+    return res.status(401).json({ message: "존재하지 않는 아이디입니다." });
   } else if (user.login_password !== login_password) {
     return res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
   }
