@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/user.css" />
+    <link rel="stylesheet" href="../css/home.css" />
     <title>회원가입</title>
-    <style>
-    </style>
-</head>
-<body>
-    <div class="regist">
-        <h2>회원가입</h2>
-        <form method="post" action="">
-            <p><input type="text" id="login_id" placeholder="ID"></p>
-            <button>아이디중복검사</button>
-            <p><input type="password" id="login_password" placeholder="Password"></p>
-            <p><input type="password" id="confirm" placeholder="Password 확인"></p>
-            <button>회원가입</button>
-        </form>
+    <style></style>
+  </head>
+  <body>
+    <div class="intro">
+      <header>
+        <h2 id="homelogo" onclick="home()">MEGOSA</h2>
+        <div id="date">현재날짜표시</div>
+        <div id="day">현재요일표시</div>
+        <div id="time">현재시간표시</div>
+        <!-- <nav id="navbar"> -->
+        <ul>
+          <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
+          <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
+          <div id="searchModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form>
+                <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
+                <button type="submit">검색</button>
+              </form>
+            </div>
+          </div>
+          <li><button>로그인</button></li>
+          <li><button onclick="join()">회원가입</button></li>
+        </ul>
+        <!-- </nav> -->
+      </header>
     </div>
-</body>
+    <div class="regist">
+      <h2>회원가입</h2>
+      <form method="post" action="">
+        <p><input type="text" id="login_id" placeholder="ID" /></p>
+        <button>아이디중복검사</button>
+        <p>
+          <input type="password" id="login_password" placeholder="Password" />
+        </p>
+        <p>
+          <input type="password" id="confirm" placeholder="Password 확인" />
+        </p>
+        <button>회원가입</button>
+      </form>
+    </div>
+    <script src=../js/time.js defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/home.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/post.js" defer></script>
+    <script src="../js/join.js" defer></script>
+  </body>
 </html>
