@@ -25,7 +25,7 @@ function newsfeed() {
             let nickname = rows[i]["nickname"];
             //
             let temp_html = `
-            <div id="box">
+            <div id="box" onclick="location.href='../templates/detailpost.html'">
              <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
             <p class="heading">${title}</p>
             
