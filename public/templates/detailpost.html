@@ -4,28 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시글상세조회</title>
-    <link rel="stylesheet" href="/public/css/seepost.css" />
+    <link rel="stylesheet" href="/public/css/detailpost.css" />
   </head>
   <body>
     <div class="intro">
         <header>
           <h2>MEGOSA</h2>
-          <div id="time">현재시간표시</div>
-            <ul>
-              <li><a href="post.html"><img src="/public/img/pngwing.com.png"></a></li>
-              <li><a href="#"><img src="/public/img/pngegg.png" id="openModalBtn"></a></li>
-              <div id="searchModal" class="modal">
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <form>
-                    <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
-                    <button type="submit">검색</button>
-                  </form>
-                </div>
+          <ul>
+            <li id="date"></li>
+            <li id="day"></li>
+            <li id="time"></li>
+            <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
+            <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
+            <div id="searchModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <form>
+                  <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
+                  <button type="submit">검색</button>
+                </form>
               </div>
-              <li><button href="">로그인</button></li>
-              <li><button href="">회원가입</button></li>
-            </ul>
+            </div>
+            <li><button>로그인</button></li>
+            <li><button onclick="join()">회원가입</button></li>
+          </ul>
         </header>
       </div>
     <div class="board_wrap">

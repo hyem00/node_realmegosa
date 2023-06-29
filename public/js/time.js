@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       minutes = "0" + minutes;
     }
 
-    var clockTime = hours + ":" + minutes + ":" + seconds + " " + period;
+    var clockTime = period + "  " + hours + ":" + minutes + " ";
 
     var clock = document.getElementById("time");
 
@@ -37,15 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var getday = d.getDay();
 
-  var weekday = [
-    "일요일",
-    "월요일",
-    "화요일",
-    "수요일",
-    "목요일",
-    "금요일",
-    "토요일",
-  ];
+  var weekday = ["(일)", "(월)", "(화)", "(수)", "(목)", "(금)", "(토)"];
 
   var n = weekday[getday];
 
@@ -63,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mm = "0" + mm;
   }
 
-  var today = yyyy + " / " + mm + " / " + dd;
+  var today = yyyy + " . " + mm + " . " + dd;
 
   var displayWeekday = document.getElementById("day");
 
