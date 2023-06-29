@@ -10,9 +10,10 @@ router.post("/users", async (req, res) => {
   const { login_id, login_password, confirm } = req.body;
   console.log(req.body);
   const searchStr = /[^a-zA-Z0-9]/;
-
+  console.log(req.body);
   try {
     if (
+      // !login_id ||
       login_id.length < 2 ||
       login_id.length > 16 ||
       login_id.search(searchStr) != -1
