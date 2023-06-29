@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>최신글</title>
 
-    <link rel="stylesheet" href="/public/css/main.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
@@ -29,9 +29,9 @@
     <div>
       <!-- 현재 문자를 아이콘으로 변경하기,링크 걸어주기 -->
       <!-- 클릭했을때 글자 색상 변경  -->
-      <ul class="menu"> 
+      <ul class="menu">
         <!-- onclick newsfeed() -->
-        <li><a href=#newsfeed onclick="newsfeed()">최신</a></li>
+        <li><a href="#newsfeed" onclick="newsfeed()">최신</a></li>
         <li><a href="#news">룰렛</a></li>
         <li>
           <a href="#contact">Contact</a>
@@ -57,7 +57,10 @@
       </div>
     </section>
     <!-- <script src="넣어주기" type="module"></script> -->
-    <script src=public/js/time.js defer></script>
-    <script src=public/js/newsfeed.js defer></script>
+    <script src="../js/time.js" defer></script>
+    <script src="../js/newsfeed.js" defer></script>
   </body>
 </html>
+
+<!-- 라이브 서버로는 css 적용 되는데
+서버 열어서 하면 안됌 -->
