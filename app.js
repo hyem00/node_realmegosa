@@ -28,6 +28,10 @@ app.get("/user.html", (req, res) => {
   res.sendFile(__dirname + "/public/templates/user.html");
 });
 
+app.get("/detailpost.html", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/detailpost.html");
+});
+
 app.listen(PORT, () => {
   console.log(PORT, "포트 번호로 서버가 실행되었습니다.");
 });
