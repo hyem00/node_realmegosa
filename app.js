@@ -10,9 +10,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use("/api", [usersRouter, postRouter]);
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/templates/main.html");
+  res.sendFile(__dirname + "/public/templates/home.html");
 });
 
 app.listen(PORT, () => {
