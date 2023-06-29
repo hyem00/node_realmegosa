@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/templates/home.html");
 });
 
+// app.get("/public/css", (req, res) => {
+//   res.sendFile(__dirname + "/public/css/main.css");
+// });
+
 app.listen(PORT, () => {
   console.log(PORT, "포트 번호로 서버가 실행되었습니다.");
 });
