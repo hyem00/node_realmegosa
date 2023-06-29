@@ -1,45 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시글상세조회</title>
-    <link rel="stylesheet" href="../css/seepost.css" />
+    <link rel="stylesheet" href="/public/css/seepost.css" />
   </head>
   <body>
     <div class="intro">
         <header>
-            <h2>MEGOSA</h2>
-            <div id="time">현재시간표시</div>
-              <ul>
-                <li><a href="#"></a><img src="/img/pngwing.com.png"></a></li>
-                <li><a href="#"></a><img src="/img/pngegg.png" id="openModalBtn"></a></li>
-                <div id="searchModal" class="modal">
-                  <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <form>
-                      <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
-                      <button type="submit">검색</button>
-                    </form>
-                  </div>
+          <h2>MEGOSA</h2>
+          <div id="time">현재시간표시</div>
+            <ul>
+              <li><a href="post.html"><img src="/img/pngwing.com.png"></a></li>
+              <li><a href="#"><img src="/img/pngegg.png" id="openModalBtn"></a></li>
+              <div id="searchModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <form>
+                    <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
+                    <button type="submit">검색</button>
+                  </form>
                 </div>
-                <li><button href="">로그인</button></li>
-                <li><button href="">회원가입</button></li>
-              </ul>
-          </header>
-</div>  
-<h1>제목을 입력해주세요.</h1>
-<div>
-  <label for="postId">게시글 ID:</label>
-  <input type="text" id="postId" />
-  <button onclick="fetchPost()">조회</button>
-</div>
-<div id="postContainer"></div>
-    </body>
-
-
-
-      <script src="넣어주기" type="module"></script>
-      <script src=../js/time.js></script>
-      <script src="../js/search.js"></script>
-      <script src="../js/post.js"></script>
+              </div>
+              <li><button href="">로그인</button></li>
+              <li><button href="">회원가입</button></li>
+            </ul>
+        </header>
+      </div>
+    <div class="board_wrap">
+      <div class="board_title">
+        <strong>MEGOSA</strong>
+        <p>우리 음식으로 소통해요! "메뉴를 고민하는 사람들" , MEGOSA!</p>
+      </div>
+      <div class="board_view_wrap">
+        <div class="board_view">
+          <div class="title">제목을 입력해주세요.</div>
+          <div class="info">
+            <dl>
+              <dt>번호</dt>
+              <dd>1</dd>
+            </dl>
+            <dl>
+              <dt>닉네임</dt>
+              <dd>장블리</dd>
+            </dl>
+            <dl>
+              <dt>작성일</dt>
+              <dd>2023.06.29</dd>
+            </dl>
+            <dl>
+              <dt>좋아요</dt>
+              <dd>33</dd>
+            </dl>
+          </div>
+          <div class="cont">
+            글 내용이 들어갑니다<br/>
+            글 내용이 들어갑니다<br/>
+            글 내용이 들어갑니다<br/>
+            글 내용이 들어갑니다<br/>
+            글 내용이 들어갑니다<br/>
+            글 내용이 들어갑니다<br/>
+            글 내용이 들어갑니다<br/>
+            글 내용이 들어갑니다
+          </div>
+        </div>
+        <div class="bt_wrap">
+          <a href="#" class="on">수정</a>
+          <a href="#">삭제</a>
+        </div>
+      </div>
+    </div>
+    <script src=../js/time.js></script>
+    <script src="../js/search.js"></script>
+  </body>
+</html>
