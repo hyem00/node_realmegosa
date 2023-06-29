@@ -13,7 +13,15 @@ app.use("/api", [usersRouter, postRouter]);
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/home.html");
+});
+
+app.get("/main.html", (req, res) => {
   res.sendFile(__dirname + "/public/templates/main.html");
+});
+
+app.get("/post.html", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/post.html");
 });
 
 // app.get("/public/css", (req, res) => {
