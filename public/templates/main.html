@@ -5,51 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>최신글</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
-    <!-- <link href="http://localhost:8000/public/css/main.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" type="text/css" href="../css/post.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
     <div class="intro">
       <header>
-        <h2>MEGOSA</h2>
-        <!-- 시간표시 어케합니까 -->
+        <h2 id="homelogo" onclick="home()">MEGOSA</h2>
         <div id="date">현재날짜표시</div>
         <div id="day">현재요일표시</div>
         <div id="time">현재시간표시</div>
-        <nav>
-          <!-- 아이콘으로 대체하기 , 링크 걸어주기 -->
-          <ul>
-            <li><a href="#">게시글작성</a></li>
-            <li><a href="">검색</a></li>
-            <li><a href="">로그인</a></li>
-            <li><a href="">회원가입</a></li>
-          </ul>
-        </nav>
+        <!-- <nav id="navbar"> -->
+        <ul>
+          <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
+          <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
+          <div id="searchModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form>
+                <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
+                <button type="submit">검색</button>
+              </form>
+            </div>
+          </div>
+          <li><button>로그인</button></li>
+          <li><button onclick="join()">회원가입</button></li>
+        </ul>
       </header>
     </div>
-
     <div>
-      <!-- 현재 문자를 아이콘으로 변경하기,링크 걸어주기 -->
-      <!-- 클릭했을때 글자 색상 변경  -->
       <ul class="menu"> 
-        <!-- onclick newsfeed() -->
         <li><a href=#newsfeed onclick="newsfeed()">최신</a></li>
         <li><a href="#news">룰렛</a></li>
         <li>
           <a href="#contact">Contact</a>
           <ul class="category">
-            <!-- 드롭다운박스 css 오류 슈정 -->
             <li><a href="#">홈쿡</a></li>
             <li><a href="#">맛집</a></li>
           </ul>
         </li>
       </ul>
     </div>
-    <!-- 클래스나 아이디 둘 중 뭘로 사용  할지-->
     <section id="cardLists">
     </section>
-    <!-- <script src="넣어주기" type="module"></script> -->
     <script src=../js/time.js defer></script>
-    <script src=../js/newsfeed.js defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/home.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/post.js" defer></script>
+    <script src="../js/join.js" defer></script>
+    <script src="../js/newsfeed.js" defer></script>
   </body>
 </html>
