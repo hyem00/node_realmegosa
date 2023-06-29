@@ -37,16 +37,15 @@
     </div>
     <div class="regist">
       <h2>회원가입</h2>
-      <form method="post" action="">
-        <p><input type="text" id="login_id" placeholder="ID" /></p>
-        <button>아이디중복검사</button>
+      <form method="post" id="signup">
+        <p><input type="text" id="login_id" placeholder="ID" name="login_id" required/></p>
         <p>
-          <input type="password" id="login_password" placeholder="Password" />
+          <input type="password" id="login_password" placeholder="Password" name="login_password" required/>
         </p>
         <p>
-          <input type="password" id="confirm" placeholder="Password 확인" />
+          <input type="password" id="confirm" placeholder="Password 확인" name="confirm" required/>
         </p>
-        <button>회원가입</button>
+        <button type="submit">회원가입</button>
       </form>
     </div>
     <script src=../js/time.js defer></script>
@@ -55,5 +54,6 @@
     <script src="../js/main.js" defer></script>
     <script src="../js/post.js" defer></script>
     <script src="../js/join.js" defer></script>
+    <script src="../js/user.js" defer></script>
   </body>
 </html>

@@ -11,6 +11,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use("/api", [usersRouter, postRouter]);
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/templates/home.html");
