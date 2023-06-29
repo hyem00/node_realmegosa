@@ -10,8 +10,8 @@ closeModal.addEventListener("click", function () {
   searchModal.style.display = "none";
 });
 
-window.addEventListener("click", function (event) {
-  if (event.target === searchModal) {
-    searchModal.style.display = "none";
-  }
-});
+// window.addEventListener("click", function (event) {
+//   if (event.target === searchModal) {
+//     searchModal.style.display = "none";
+//   }
+// });
