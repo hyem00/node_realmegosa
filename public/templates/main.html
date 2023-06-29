@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>최신글</title>
-    <link rel="stylesheet" href="./css/main.css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <!-- <link href="http://localhost:8000/public/css/main.css" rel="stylesheet" type="text/css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
     <div class="intro">
@@ -27,8 +30,9 @@
     <div>
       <!-- 현재 문자를 아이콘으로 변경하기,링크 걸어주기 -->
       <!-- 클릭했을때 글자 색상 변경  -->
-      <ul class="menu">
-        <li><a href="#" href="#home">최신</a></li>
+      <ul class="menu"> 
+        <!-- onclick newsfeed() -->
+        <li><a href=#newsfeed onclick="newsfeed()">최신</a></li>
         <li><a href="#news">룰렛</a></li>
         <li>
           <a href="#contact">Contact</a>
@@ -41,10 +45,10 @@
       </ul>
     </div>
     <!-- 클래스나 아이디 둘 중 뭘로 사용  할지-->
-    <section class="cardList" id="cardList">
-      <!-- 최신 카드들 넣어주는 공간 -->
+    <section id="cardLists">
     </section>
-    <script src="넣어주기" type="module"></script>
-    <script src=../js/time.js></script>
+    <!-- <script src="넣어주기" type="module"></script> -->
+    <script src=../js/time.js defer></script>
+    <script src=../js/newsfeed.js defer></script>
   </body>
 </html>
