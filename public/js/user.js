@@ -13,7 +13,7 @@ form.addEventListener("submit", (e) => {
         headers : {
             "Content-Type": "application/x-www-form-urlencoded"
         },
-        body : payload,
+        body : JSON.stringify( payload )
     })
     .then(res => res.json())
     .then(data => console.log(data));
