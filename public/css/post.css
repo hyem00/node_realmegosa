@@ -42,12 +42,6 @@ header ul > li {
   display: flex;
   align-items: center;
 }
-
-h1 {
-  margin-top: 70px;
-  text-align: center;
-}
-
 #time {
   display: flex;
   width: 112px;
@@ -73,35 +67,12 @@ header ul li img {
   cursor: pointer;
 }
 
-#startbutton {
-  display: flex;
-  width: 504px;
-  padding: 7.5px 17px 8.5px 17px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  background: #212529;
-  color: #fff;
-  position: absolute;
-  margin-top: 20px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 button {
-  /* display: inline-flex;
-  padding: 7.5px 17px 8.5px 17px; */
   align-items: center;
   background: #212529;
   color: #fff;
   border-radius: 16px;
   cursor: pointer;
-}
-
-.foodjpeg {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: 80px;
 }
 
 .modal {
@@ -148,4 +119,31 @@ button {
   border-top-width: 0;
   border-bottom-width: 1;
   outline: none;
+}
+
+#title-input {
+  display: flex;
+  justify-content: flex-start;
+  width: 1000px;
+  height: 50px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
+  outline: none;
+}
+
+#content-input {
+  width: 1000px;
+  height: 400px;
+  outline: none;
+  border: none;
+  margin-top: 30px;
+}
+
+#submitBtn {
+  position: fixed;
+  top: auto;
+  justify-content: flex-end;
+  margin-left: 600px;
 }
