@@ -74,7 +74,10 @@ function searchBtn() {
         </div>`;
         // 현재 게시글 제목이 검색어를 포함하는 경우에만 다음 내용을 실행합니다.
         if (lower_title.includes(lower_search)) {
+          // 모달 창 닫힘.
           searchModal.style.display = "none";
+          // test id 를 가진 div를 가져옴
+          // 가져온 div 뒤에 temp_html 삽입
           document
             .getElementById("test")
             .insertAdjacentHTML("beforeend", temp_html);
