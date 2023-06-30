@@ -7,8 +7,8 @@ function update() {
     const myForm = {};
     await payload.forEach((value, key) => (myForm[key] = value));
     console.log(myForm);
-    fetch("http://localhost:8000/api/posts/${post_id}", {
-      method: "PUT",
+    fetch("http://localhost:8000/api/posts/:post_id", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

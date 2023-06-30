@@ -70,6 +70,11 @@ function newsfeed() {
             <button id="updateBtn" data-post-id="${result.post_id}">수정</button>
             <button id="deleteBtn">삭제</button>
            </div>
+           <script>
+            function opendetail() {
+              location.href = "http://localhost:8000/posts/${result.post_id}"
+            }
+           </script>
             `;
             $("#cardLists").append(temp_html);
           });
