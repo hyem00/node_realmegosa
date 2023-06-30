@@ -14,3 +14,7 @@ function hideModal() {
   const modal = document.getElementById("login_modal");
   modal.classList.remove("show");
 }
+
+// 모달창 제어 버튼
+const loginButton = document.getElementById("login-btn");
+loginButton.addEventListener("click", login);

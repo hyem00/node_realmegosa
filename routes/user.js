@@ -7,10 +7,8 @@ const bcrypt = require("bcrypt");
 
 // 회원 가입
 router.post("/users", async (req, res) => {
-  const { login_id, login_password, confirm } = req.body;
-  console.log(req.body);
+  const { login_id, nickname, login_password, confirm } = req.body;
   const searchStr = /[^a-zA-Z0-9]/;
-  console.log(req.body);
   try {
     if (
       // !login_id ||
@@ -40,7 +38,11 @@ router.post("/users", async (req, res) => {
     }
 
     const hashPassword = await bcrypt.hash(req.body.login_password, 5);
-    const user = await Users.create({ login_id, login_password: hashPassword });
+    const user = await Users.create({
+      login_id,
+      login_password: hashPassword,
+      nickname,
+    });
     if (!user) {
       res.status(401).json({ Message: "create false" });
     }

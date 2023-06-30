@@ -25,7 +25,7 @@
               </form>
             </div>
           </div>
-          <li> <button onclick="showModal()">로그인</button></li>
+          <li> <button onclick="showModal()" id="login-btn">로그인</button></li>
           <div id="login_modal" class="login_modal">
             <div class="login_modal-content">
               <span class="login_close" onclick="hideModal()">&times;</span>
@@ -35,13 +35,13 @@
                 <input type="text" id="username" name="login_id" required><br><br>
                 <label for="password">비밀번호 : </label>
                 <input type="password" id="password" name="login_password" required><br><br>
-                <button type="submit">로그인</button>
+                <button type="submit" id="login-Btn">로그인</button>
               </form>
                 <button id="kakao_login">카카오톡으로 로그인하기</button>
                 <img src="../img/카카오톡_로고_360.png" id="kakaologo">
             </div>
           </div>
-          <li><button onclick="join()">회원가입</button></li>
+          <li><button data-join onclick="join()">회원가입</button></li>
         </ul>
       </header>
     </div>
