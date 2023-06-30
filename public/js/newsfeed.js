@@ -36,6 +36,7 @@ function newsfeed() {
             </div>
            </div>
            <script>
+
            function detailview(){
             location.href = "http://localhost:8000/detailpost?&post_id=${post_id}"
            }
