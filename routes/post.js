@@ -56,7 +56,6 @@ router.get("/posts/:post_id", async (req, res) => {
 
 // 게시글 작성
 router.post("/posts", async (req, res) => {
-  console.log(req);
   // const { user_id } = res.locals.user;
   //   const user = await Users_profiles.findOne({ where: { user_id: user_id } });
   const { title, content, category, foodtype } = req.body;
@@ -75,8 +74,8 @@ router.post("/posts", async (req, res) => {
 
 // 게시글 수정
 router.put("/posts/:post_id", async (req, res) => {
-  console.log(req);
   const { post_id } = req.params;
+  console.log(post_id);
   // const { user_id } = res.locals.user;
   //   const user = await Users_profiles.findOne({ where: { user_id: user_id } });
   const { title, content } = req.body;
