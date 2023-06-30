@@ -255,7 +255,7 @@ header ul > li {
   font-size: 0;
 }
 
-.bt_wrap a {
+.bt_wrap button {
   display: inline-block;
   min-width: 80px;
   margin-left: 10px;
@@ -265,7 +265,7 @@ header ul > li {
   font-size: 1.4rem;
 }
 
-.bt_wrap a:first-child {
+/* .bt_wrap a:first-child {
   margin-left: 0;
 }
 
@@ -273,7 +273,7 @@ header ul > li {
   background: #000;
   color: #fff;
   margin-left: 750px;
-}
+} */
 
 .board_title {
   margin-bottom: 30px;
