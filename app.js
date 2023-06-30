@@ -17,21 +17,17 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/templates/home.html");
 });
 
-app.get("/main.html", (req, res) => {
+app.get("/main", (req, res) => {
   res.sendFile(__dirname + "/public/templates/main.html");
 });
 
-app.get("/post.html", (req, res) => {
+app.get("/post", (req, res) => {
   res.sendFile(__dirname + "/public/templates/post.html");
 });
 
-app.get("/user.html", (req, res) => {
+app.get("/user", (req, res) => {
   res.sendFile(__dirname + "/public/templates/user.html");
 });
-
-// app.get("/detailpost.html", (req, res) => {
-//   res.sendFile(__dirname + "/public/templates/detailpost.html");
-// });
 
 app.get("/detailpost/:post_id", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
