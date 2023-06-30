@@ -29,7 +29,11 @@ app.get("/user", (req, res) => {
   res.sendFile(__dirname + "/public/templates/user.html");
 });
 
-app.get("/post/:post_id", (req, res) => {
+app.get("/detailpost/:post_id", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/detailpost.html");
+});
+
+app.get("/update", (req, res) => {
   res.sendFile(__dirname + "/public/templates/update.html");
 });
 
