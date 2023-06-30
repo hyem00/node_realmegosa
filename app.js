@@ -29,10 +29,6 @@ app.get("/user", (req, res) => {
   res.sendFile(__dirname + "/public/templates/user.html");
 });
 
-// app.get("/detailpost.html", (req, res) => {
-//   res.sendFile(__dirname + "/public/templates/detailpost.html");
-// });
-
 app.get("/detailpost/:post_id", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
