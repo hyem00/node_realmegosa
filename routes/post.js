@@ -32,7 +32,7 @@ router.get("/posts", async (req, res) => {
 });
 
 // 게시글 상세 조회
-router.get("/posts/:post_id", async (req, res) => {
+router.get("/detailpost/:post_id", async (req, res) => {
   const { post_id } = req.params;
 
   const post = await Posts.findOne({ where: { post_id: post_id } });
