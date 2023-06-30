@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/user.css" />
     <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/post.css" />
     <title>회원가입</title>
     <style></style>
   </head>
@@ -18,13 +20,13 @@
           <li id="day"></li>
           <li id="time"></li>
           <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
-          <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
+          <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn" ></a></li>
           <div id="searchModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>
-              <form>
-                <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
-                <button type="submit">검색</button>
+              <form id="search_modal">
+                <input id="search_input" type="text" placeholder="검색어를 입력하세요">
+                <button onclick="searchBtn()">검색</button>
               </form>
             </div>
           </div>
@@ -33,7 +35,7 @@
         </ul>
       </header>
     </div>
-    <div class="regist">
+    <div class="regist" id="test">
       <h2>회원가입</h2>
       <form method="post" id="signup">
         <p><input type="text" id="login_id" placeholder="ID" name="login_id" required/></p>

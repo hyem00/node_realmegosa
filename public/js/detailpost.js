@@ -1,3 +1,8 @@
+function detailPost() {
+  location.href = "/detailpost/:post_id";
+}
+
+// http://localhost:8000/detailpost/${post_id}
 // document.addEventListener("DOMContentLoaded", function () {
 //   const config = {
 //     method: "get",
