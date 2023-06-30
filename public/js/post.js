@@ -1,3 +1,3 @@
 function post() {
-  location.href = "/post.html";
+  location.href = "/post";
 }
