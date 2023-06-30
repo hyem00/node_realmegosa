@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const config = {
     method: "get",
@@ -7,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function detailpost() {
     const url = window.location.href;
     const apost_id = Number(url.substr(url.length - 1));
-    // console.log(apost_id);
     fetch("http://localhost:8000/api/posts", config)
       .then((response) => response.json())
       .then((data) =>
@@ -49,4 +47,3 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.log(error));
   }
 });
-

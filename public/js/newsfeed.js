@@ -23,9 +23,9 @@ function newsfeed() {
             let createdAt = rows[i]["createdAt"];
             //닉네임 고치기
             let nickname = rows[i]["nickname"];
-            "location.href='http://localhost:8000/detailpost/${post_id}'"
+          
             let temp_html = `
-            <div id="box" onclick="detailPost()" >
+            <div id="box" onclick="location.href='http://localhost:8000/detailpost/${post_id}'" >
              <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
             <p class="heading">${title}</p>
             
