@@ -55,13 +55,14 @@ router.get("/posts/:post_id", async (req, res) => {
 });
 
 // 게시글 작성
-router.post("/posts", authMiddleware, async (req, res) => {
-  const { user_id } = res.locals.user;
+router.post("/posts", async (req, res) => {
+  console.log(req);
+  // const { user_id } = res.locals.user;
   //   const user = await Users_profiles.findOne({ where: { user_id: user_id } });
   const { title, content, category, foodtype } = req.body;
 
   const post = await Posts.create({
-    user_id: user_id,
+    // user_id: user_id,
     title,
     content,
     category,
@@ -73,9 +74,10 @@ router.post("/posts", authMiddleware, async (req, res) => {
 });
 
 // 게시글 수정
-router.put("/posts/:post_id", authMiddleware, async (req, res) => {
+router.put("/posts/:post_id", async (req, res) => {
+  console.log(req);
   const { post_id } = req.params;
-  const { user_id } = res.locals.user;
+  // const { user_id } = res.locals.user;
   //   const user = await Users_profiles.findOne({ where: { user_id: user_id } });
   const { title, content } = req.body;
 

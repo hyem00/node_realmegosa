@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>이쁜홈</title>
     <link rel="stylesheet" type="text/css" href="../css/post.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
     <div class="intro">
@@ -40,7 +41,7 @@
         </select>
         <textarea id="content-input" name="content" placeholder="당신의 음식이야기를 들려주세요." required></textarea>
         <div class="postBtn">
-          <button type="submit" id="submitBtn" onclick="postBtn()">게시글작성</button>
+          <button type="submit" id="submitBtn" onclick="update()">게시글 수정 완료</button>
           <button type="button" id="cancelBtn">취소</button>
         </div>
       </form>
@@ -50,6 +51,7 @@
     <script src="../js/home.js" defer></script>
     <script src="../js/main.js" defer></script>
     <script src="../js/post.js" defer></script>
-    <script src="../js/join.js" defer></script>
+    <script src="../js/update.js" defer></script>
+    <script src="../js/newsfeed.js" defer></script>
   </body>
 </html>
