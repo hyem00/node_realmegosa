@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 // 회원 가입
 router.post("/users", async (req, res) => {
   const { login_id, login_password, confirm } = req.body;
+  console.log(req.body);
   const searchStr = /[^a-zA-Z0-9]/;
   console.log(req.body);
   try {

@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   const config = {
     method: "get",
@@ -48,3 +49,4 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.log(error));
   }
 });
+

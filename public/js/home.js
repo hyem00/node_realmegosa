@@ -1,5 +1,5 @@
 function startBtn() {
-  location.href = "main.html";
+  location.href = "main";
 }
 ////////////////////
 
