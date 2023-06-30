@@ -1,7 +1,7 @@
 const loginForm = document.getElementById("login");
 
-loginForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+loginForm.addEventListener("submit", async () => {
+  //e.preventDefault();
   const loginPayload = new FormData(loginForm);
   const mloginForm = {};
   await loginPayload.forEach((value, key) => (mloginForm[key] = value));
@@ -15,7 +15,16 @@ loginForm.addEventListener("submit", async (e) => {
   })
     .then((res) => res.json())
     .then(res => {
-        console.log(res)
-        localStorage.setItem('token', res.token);
+        console.log("로그인완료");
     });
 });
+
+function logout () {
+    fetch("http://localhost:8000/api/logout", {
+        method: "GET"
+    })
+    .then((res) => res.json())
+    .then(res => {
+        console.log("로그아웃완료");
+    })
+}
