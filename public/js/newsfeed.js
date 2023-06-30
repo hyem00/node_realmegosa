@@ -35,10 +35,6 @@ function newsfeed() {
             </div>
            </div>
             `;
-            // $("#box").click(function () {
-            //   alert("test");
-            // });
-
             $("#cardLists").append(temp_html);
           }
           $("#cardLists").on("click", "#box", function () {
