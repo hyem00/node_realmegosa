@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이쁜홈</title>
+    <link rel="stylesheet" type="text/css" href="../css/post.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="intro">
+      <header>
+        <h2 id="homelogo" onclick="home()">MEGOSA</h2>
+        <ul>
+          <li id="date"></li>
+          <li id="day"></li>
+          <li id="time"></li>
+          <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
+          <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
+          <div id="searchModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form>
+                <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
+                <button type="submit">검색</button>
+              </form>
+            </div>
+          </div>
+          <li><button>로그인</button></li>
+          <li><button onclick="join()">회원가입</button></li>
+        </ul>
+      </header>
+    </div>  
+    <div id="board">
+      <form id="post-form">
+        <input type="text" id="title-input" name="title" placeholder="제목을 입력해주세요." required>
+        <select id ="category" name="category"> 
+          <option value="">카테고리</option> 
+          <option value="homecook">홈레시피</option> 
+          <option value="matjib">맛집추천</option> 
+        </select>
+        <textarea id="content-input" name="content" placeholder="당신의 음식이야기를 들려주세요." required></textarea>
+        <div class="postBtn">
+          <button type="submit" id="submitBtn" onclick="update()">게시글 수정 완료</button>
+          <button type="button" id="cancelBtn">취소</button>
+        </div>
+      </form>
+    </div>
+    <script src=../js/time.js defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/home.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/post.js" defer></script>
+    <script src="../js/update.js" defer></script>
+    <script src="../js/newsfeed.js" defer></script>
+  </body>
+</html>
