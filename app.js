@@ -17,15 +17,15 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/templates/home.html");
 });
 
-app.get("/main", (req, res) => {
+app.get("/main.html", (req, res) => {
   res.sendFile(__dirname + "/public/templates/main.html");
 });
 
-app.get("/post", (req, res) => {
+app.get("/post.html", (req, res) => {
   res.sendFile(__dirname + "/public/templates/post.html");
 });
 
-app.get("/user", (req, res) => {
+app.get("/user.html", (req, res) => {
   res.sendFile(__dirname + "/public/templates/user.html");
 });
 
@@ -34,7 +34,6 @@ app.get("/user", (req, res) => {
 // });
 
 app.get("/detailpost/:post_id", (req, res) => {
-  console.log("test");
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
