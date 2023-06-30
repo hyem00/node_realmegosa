@@ -1,3 +1,3 @@
 function join() {
-  location.href = "user.html";
+  location.href = "user";
 }
