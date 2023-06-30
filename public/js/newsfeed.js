@@ -11,7 +11,6 @@ function newsfeed() {
         data: { data },
         success: function (response) {
           let rows = response;
-          console.log(rows);
           $("#cardLists").empty();
           for (let i = rows.length - 1; i >= 0; i--) {
             let post_id = rows[i]["post_id"];
