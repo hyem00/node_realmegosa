@@ -13,7 +13,5 @@ form.addEventListener("submit", async (e) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(myForm),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+  });
 });
