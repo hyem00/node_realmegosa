@@ -11,7 +11,6 @@ function newsfeed() {
         data: { data },
         success: function (response) {
           let rows = response;
-          console.log(rows);
           $("#cardLists").empty();
           for (let i = rows.length - 1; i >= 0; i--) {
             let post_id = rows[i]["post_id"];
@@ -43,10 +42,9 @@ function newsfeed() {
             $("#cardLists").append(temp_html);
           }
           $("#cardLists").on("click", "#box", function () {
-            $(".board_view_wrap").empty();
+            $("#cardLists").empty();
             let apost_id = $(this).data("post-id");
             const result = rows.find((x) => x.post_id === apost_id);
-            console.log(result);
             $("#cardLists").empty();
             let temp_html = `
             <div class="board_title">
@@ -77,7 +75,7 @@ function newsfeed() {
            <a href="#">삭제</a>
            </div>
                `;
-            $(".board_view_wrap").append(temp_html);
+            $("#cardLists").append(temp_html);
           });
         },
       })
