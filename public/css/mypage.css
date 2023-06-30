@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+#profile_wrap {
+  width: 360px;
+  background-color: #ece6cc;
+  margin-top: 30px;
+  margin-left: 30px;
+  border-style: none;
+}
+#profile_wrap .profile_box1 {
+  padding: 30px;
+  border: 1px solid #555;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+}
+#profile_wrap .profile_box1 .photo {
+  width: 130px;
+  height: 130px;
+  background: yellow;
+  border-radius: 50%;
+  margin-right: 16px;
+  overflow: hidden;
+}
+#profile_wrap .profile_box1 .photo img {
+  width: 130px;
+  height: 130px;
+}
+#profile_wrap .profile_box1 .right {
+  margin: 0 auto;
+  font-size: 10px;
+}
+#profile_wrap .profile_box1 .right h1 {
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+#profile_wrap .profile_box1 .right p {
+  font-size: 20px;
+}
+#profile_wrap .profile_box1 #open_close {
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: #222;
+  border: none;
+  border-radius: 0;
+}
+
+#profile_wrap .profile_box1 #correction {
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  right: 50px;
+  bottom: 0;
+  background: #222;
+  border: none;
+  border-radius: 0;
+}
+#profile_wrap .profile_box2 {
+  height: 200px;
+  border: 1px solid #222;
+  padding: 0 30px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 0;
+  transition: height 0.3s;
+  overflow: hidden;
+}
+#profile_wrap .profile_box2_active {
+  height: 200px;
+}
+#profile_wrap .profile_box2 a {
+  margin-top: 13px;
+  margin-bottom: 16px;
+}
+
+#profile_wrap .profile_box2 .commenttext {
+  height: 60px;
+  border: none;
+  resize: none;
+}
+
+#profile_wrap .profile_box2 .commentBtn {
+  width: 40px;
+  margin-left: 250px;
+  margin-top: 10px;
+}
+
+#mypost {
+  max-width: 1000px;
+  width: 850px;
+  height: 600px;
+  position: absolute;
+  left: 450px;
+  top: 110px;
+  border: 1px solid #222;
+}
+
+#mypost .viewmypost {
+  margin-top: 10px;
+  margin-left: 10px;
+}
