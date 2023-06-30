@@ -2,13 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const { Posts } = require("../models");
-// const { Users_profiles } = require("../models");
 
 const authMiddleware = require("../middlewares/auth-middleware.js");
 
 // 최신 게시글 조회
 router.get("/posts", async (req, res) => {
-  // console.log(req);
   const allPosts = await Posts.findAll({
     attributes: [
       "post_id",
