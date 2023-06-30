@@ -22,6 +22,7 @@ function newsfeed() {
             let createdAt = rows[i]["createdAt"];
             //닉네임 고치기
             let nickname = rows[i]["nickname"];
+          
             let temp_html = `
             <div id="box" data-post-id="${post_id}">
              <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
