@@ -6,13 +6,6 @@
   /* width: 1440px; */
   margin: 0 auto;
 }
-button {
-  align-items: center;
-  background: #212529;
-  color: #fff;
-  border-radius: 16px;
-  cursor: pointer;
-}
 
 header {
   /* width: 100; */
