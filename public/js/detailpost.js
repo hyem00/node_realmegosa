@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
           data: { data },
           success: function (response) {
             let rows = response;
-            const result = rows.find((x) => (x.post_id = apost_id));
+            const result = rows.find((x) => (x.post_id === apost_id));
             console.log(result);
             $(".board_view_wrap").empty();
             let temp_html = `
