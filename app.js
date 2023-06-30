@@ -33,6 +33,10 @@ app.get("/detailpost/:post_id", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
+app.get("/update", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/update.html");
+});
+
 app.listen(PORT, () => {
   console.log(PORT, "포트 번호로 서버가 실행되었습니다.");
 });
