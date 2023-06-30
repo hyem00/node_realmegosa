@@ -35,7 +35,7 @@
                 <input type="text" id="username" name="login_id" required><br><br>
                 <label for="password">비밀번호 : </label>
                 <input type="password" id="password" name="login_password" required><br><br>
-                <button type="submit">로그인</button>
+                <button id="closeLogin" type="submit">로그인</button>
               </form>
                 <button id="kakao_login">카카오톡으로 로그인하기</button>
                 <img src="../img/카카오톡_로고_360.png" id="kakaologo">
@@ -43,6 +43,7 @@
           </div>
           <li><button onclick="join()">회원가입</button></li>
           <li><button onclick="logout()">로그아웃</button></li>
+          <li><button onclick="mypage()">내정보</button></li>
         </ul>
       </header>
     </div>
@@ -61,5 +62,6 @@
     <script src="../js/post.js" defer></script>
     <script src="../js/join.js" defer></script>
     <script src="../js/login.js" defer></script>
+    <script src="../js/mypage.js" defer></script>
   </body>
 </html>
