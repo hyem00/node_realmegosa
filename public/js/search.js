@@ -76,8 +76,6 @@ function searchBtn() {
         if (lower_title.includes(lower_search)) {
           // 모달 창 닫힘.
           searchModal.style.display = "none";
-          // test id 를 가진 div를 가져옴
-          // 가져온 div 뒤에 temp_html 삽입
           document
             .getElementById("test")
             .insertAdjacentHTML("beforeend", temp_html);
