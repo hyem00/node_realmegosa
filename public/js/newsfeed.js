@@ -78,3 +78,5 @@ function newsfeed() {
     )
     .catch((error) => console.log(error));
 }
+
+newsfeed();
