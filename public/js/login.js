@@ -1,7 +1,7 @@
 const loginForm = document.getElementById("login");
 
-loginForm.addEventListener("submit", async () => {
-  //e.preventDefault();
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
   const loginPayload = new FormData(loginForm);
   const mloginForm = {};
   await loginPayload.forEach((value, key) => (mloginForm[key] = value));

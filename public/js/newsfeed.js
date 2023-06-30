@@ -75,6 +75,7 @@ function newsfeed() {
                  location.href = "http://localhost:8000/post?&post_id=${result.post_id}"
                  }
                </script>
+
             `;
             $("#cardLists").append(temp_html);
           });

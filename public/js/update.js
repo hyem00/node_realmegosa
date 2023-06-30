@@ -44,7 +44,8 @@ function update() {
     await payload.forEach((value, key) => (myForm[key] = value));
     console.log(myForm);
     fetch("http://localhost:8000/api/posts/:post_id", {
-      method: "PUT",
+
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
