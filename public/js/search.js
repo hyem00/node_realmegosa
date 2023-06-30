@@ -17,7 +17,6 @@ function searchBtn() {
     .then((response) => response.json())
     .then((data) => {
       let rows = data;
-      console.log(rows);
       // 검색어 filtering에 사용할 빈 배열 'array_for_filtering'를 생성합니다.
       let array_for_filtering = [];
       document.getElementById("test").innerHTML = "";
