@@ -43,14 +43,19 @@ loginForm.addEventListener("submit", async (e) => {
         }
       }
 
-      // 회원가입 버튼 숨기기 함수
       function hideJoinButton() {
-        const joinButton = document.querySelector("button[data-join]");
+        const joinButton = document.querySelector("#joinBtn");
         if (isLoggedIn()) {
-          joinButton.style.display = "none";
+          joinButton.textContent = "마이페이지";
+          joinButton.addEventListener("click", redirectToMyPage);
         } else {
-          joinButton.style.display = "block";
+          joinButton.textContent = "회원가입";
         }
+      }
+
+      function redirectToMyPage() {
+        const myPageURL = "/mypage";
+        window.location.href = myPageURL;
       }
 
       // 로그인/로그아웃 버튼 클릭 이벤트 처리
