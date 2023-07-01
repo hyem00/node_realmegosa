@@ -11,7 +11,7 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        unique: true, // UNIQUE
+        unique: true,
         references: {
           model: "Users", // Users 모델을 참조합니다.
           key: "user_id", // Users 모델의 userId를 참조합니다.
@@ -30,14 +30,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      // createdAt: {
-      //   allowNull: false,
-      //   type: Sequelize.DATE,
-      // },
-      // updatedAt: {
-      //   allowNull: false,
-      //   type: Sequelize.DATE,
-      // },
     });
   },
   async down(queryInterface, Sequelize) {
