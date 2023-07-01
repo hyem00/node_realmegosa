@@ -19,6 +19,7 @@ function postBtn() {
       body: JSON.stringify(myForm),
     });
     alert("게시글이 작성 되었습니다.");
+    location.href = "main";
   });
 }
 
