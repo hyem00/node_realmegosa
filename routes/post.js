@@ -32,7 +32,7 @@ router.get("/posts", async (req, res) => {
 });
 
 // 게시글 상세 조회
-router.get("/posts/:post_id", async (req, res) => {
+router.get("/detailpost/:post_id", async (req, res) => {
   const { post_id } = req.params;
 
   const post = await Posts.findOne({ where: { post_id: post_id } });
@@ -43,20 +43,21 @@ router.get("/posts/:post_id", async (req, res) => {
     });
   } else {
     const result = {
+      post_id: post.post_id,
       title: post.title,
       content: post.content,
+      category: post.category,
       createdAt: post.createdAt,
       updatedAt: post.updatedAt,
       //   nickname: post.nickname
     };
 
-    return res.status(200).json({ result });
+    return res.status(200).json(result);
   }
 });
 
 // 게시글 작성
 router.post("/posts", async (req, res) => {
-  console.log(req);
   // const { user_id } = res.locals.user;
   //   const user = await Users_profiles.findOne({ where: { user_id: user_id } });
   const { title, content, category, foodtype } = req.body;
@@ -75,7 +76,6 @@ router.post("/posts", async (req, res) => {
 
 // 게시글 수정
 router.put("/posts/:post_id", async (req, res) => {
-  console.log(req);
   const { post_id } = req.params;
   // const { user_id } = res.locals.user;
   //   const user = await Users_profiles.findOne({ where: { user_id: user_id } });
@@ -88,12 +88,13 @@ router.put("/posts/:post_id", async (req, res) => {
       success: false,
       errorMessage: "해당 게시글을 찾을 수 없습니다.",
     });
-  } else if (post.user_id !== user_id) {
-    return res.status(401).json({
-      success: false,
-      message: "권한이 없습니다.",
-    });
   }
+  // } else if (post.user_id !== user_id) {
+  //   return res.status(401).json({
+  //     success: false,
+  //     message: "권한이 없습니다.",
+  //   });
+  // }
   await Posts.update(
     {
       title: title,
@@ -111,9 +112,9 @@ router.put("/posts/:post_id", async (req, res) => {
 });
 
 // 게시글 삭제
-router.delete("/posts/:post_id", authMiddleware, async (req, res) => {
+router.delete("/posts/:post_id", async (req, res) => {
   const { post_id } = req.params;
-  const { user_id } = res.locals.user;
+  // const { user_id } = res.locals.user;
 
   const post = await Posts.findOne({ where: { post_id: post_id } });
 
@@ -122,12 +123,13 @@ router.delete("/posts/:post_id", authMiddleware, async (req, res) => {
       success: false,
       errorMessage: "해당 게시글을 찾을 수 없습니다.",
     });
-  } else if (post.user_id !== user_id) {
-    return res.status(401).json({
-      success: false,
-      message: "권한이 없습니다.",
-    });
   }
+  // } else if (post.user_id !== user_id) {
+  //   return res.status(401).json({
+  //     success: false,
+  //     message: "권한이 없습니다.",
+  //   });
+  // }
   await Posts.destroy({ where: { post_id: post_id } });
   return res.status(200).json({
     success: true,
