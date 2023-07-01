@@ -23,7 +23,7 @@ async function newsfeed() {
             let createdAt = rows[i]["createdAt"];
             let a = createdAt.substring(0, 10);
             //닉네임 고치기
-            //let nickname = rows[i]["nickname"];
+            let nickname = rows[i]["nickname"];
 
             let temp_html = `
             <div id="box" onclick="detailview(${post_id})">
