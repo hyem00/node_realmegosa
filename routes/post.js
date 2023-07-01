@@ -19,7 +19,7 @@ router.get("/posts", async (req, res) => {
       "createdAt",
       "updatedAt",
     ],
-    order: [["updatedAt", "DESC"]],
+    order: [["updatedAt", "ASC"]],
   });
 
   if (!allPosts.length) {

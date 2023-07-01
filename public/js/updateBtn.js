@@ -31,7 +31,7 @@ function updateBtn(post_id) {
             <form id="post-form">
               <input type="text" id="title-input" name="title" placeholder="제목을 입력해주세요." value="${title}" required>
               <select id ="category" name="category"> 
-                <option value="">${category}</option> 
+                <option value="${category}"></option> 
                 <option value="homecook">홈레시피</option> 
                 <option value="matjib">맛집추천</option> 
               </select>
