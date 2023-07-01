@@ -22,7 +22,7 @@ function detailview(post_id) {
             let foodtype = rows[i]["foodtype"];
             let createdAt = rows[i]["createdAt"];
             //닉네임 고치기
-            let nickname = rows[i]["nickname"];
+            //let nickname = rows[i]["nickname"];
 
             let temp_html = `
             <div class="board_title">
@@ -37,7 +37,7 @@ function detailview(post_id) {
                </dl>
                <dl>
                  <dt>닉네임</dt>
-                 <dd>${nickname}</dd>
+                 <dd></dd>
                </dl>
                <dl>
                  <dt>작성일</dt>

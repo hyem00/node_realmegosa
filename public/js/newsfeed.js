@@ -22,7 +22,7 @@ async function newsfeed() {
             let foodtype = rows[i]["foodtype"];
             let createdAt = rows[i]["createdAt"];
             //닉네임 고치기
-            let nickname = rows[i]["nickname"];
+            //let nickname = rows[i]["nickname"];
 
             let temp_html = `
             <div id="box" onclick="detailview(${post_id})">
@@ -34,7 +34,7 @@ async function newsfeed() {
               </p>
               <div class="data"></div>
               <span class="date">${createdAt}</span>
-             <span class="nickname">${nickname}</span>
+             <span class="nickname"></span>
             </div>
            </div>
             `;

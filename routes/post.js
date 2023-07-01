@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { Posts, Users } = require("../models");
+const { Posts } = require("../models");
 
 const authMiddleware = require("../middlewares/auth-middleware.js");
 
@@ -60,7 +60,7 @@ router.get("/posts/:post_id", async (req, res) => {
 router.post("/posts", authMiddleware, async (req, res) => {
   const { user_id } = res.locals.user;
   // const user = await Users.findOne({ where: { user_id: user_id } });
-  const { nickname } = await Users.findOne({ where: { user_id } });
+  // const { nickname } = await Users.findOne({ where: { user_id } });
   const { title, content, category, foodtype } = req.body;
 
   const post = await Posts.create({
@@ -69,7 +69,7 @@ router.post("/posts", authMiddleware, async (req, res) => {
     content,
     category,
     foodtype,
-    nickname: nickname,
+    //nickname: nickname,
   });
 
   return res.status(201).json({ data: post });
