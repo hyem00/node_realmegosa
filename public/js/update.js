@@ -14,9 +14,18 @@ function update(post_id) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(myForm),
+    })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      if ( res.errorMessage === "해당 게시글을 찾을 수 없습니다.") {
+        alert("해당 게시글을 찾을 수 없습니다.");
+      } else if ( res.Message === "권한이 없습니다.") {
+        alert("권한이 없습니다.");
+      } else { alert("수정완료.");
+        location.href = "main"
+      }
     });
-    alert("수정완료");
-    location.href = "main";
   });
 }
 //
