@@ -59,4 +59,3 @@ function detailview(post_id) {
       })
     );
 }
-//

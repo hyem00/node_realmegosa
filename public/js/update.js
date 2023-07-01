@@ -10,7 +10,6 @@ function update(post_id) {
 
     fetch("http://localhost:8000/api/posts/" + post_id, {
       method: "PUT",
-      master,
       headers: {
         "Content-Type": "application/json",
       },
