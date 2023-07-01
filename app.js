@@ -38,6 +38,16 @@ app.get("/posts/:post_id", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
+// 홈쿡 카테고리 조회
+app.get("/category/homecook", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/category.html");
+});
+
+// 맛집 카테고리 조회
+app.get("/category/matjib", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/category.html");
+});
+
 app.listen(PORT, () => {
   console.log(PORT, "포트 번호로 서버가 실행되었습니다.");
 });

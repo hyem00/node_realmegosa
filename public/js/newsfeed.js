@@ -1,8 +1,9 @@
-function newsfeed() {
+document.addEventListener("DOMContentLoaded", newsfeed());
+async function newsfeed() {
   const config = {
     method: "get",
   };
-  fetch("http://localhost:8000/api/posts", config)
+  await fetch("http://localhost:8000/api/posts", config)
     .then((response) => response.json())
     .then((data) =>
       $.ajax({
