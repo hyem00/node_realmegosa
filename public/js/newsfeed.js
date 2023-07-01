@@ -25,6 +25,7 @@ function newsfeed() {
 
             let temp_html = `
             <div id="box" onclick="detailview(${post_id})">
+
              <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
             <p class="heading">${title}</p>
            <p class="texts">
@@ -35,6 +36,12 @@ function newsfeed() {
              <span class="nickname">${nickname}</span>
             </div>
            </div>
+           <script>
+
+           function detailview(){
+            location.href = "http://localhost:8000/detailpost?&post_id=${post_id}"
+           }
+          </script>
             `;
             $("#cardLists").append(temp_html);
           }

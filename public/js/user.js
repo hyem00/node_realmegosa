@@ -33,4 +33,5 @@ form.addEventListener("submit", async (e) => {
         location.href = "/";
       }
     });
+  aster;
 });
