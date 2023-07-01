@@ -13,24 +13,29 @@ app.use("/api", [usersRouter, postRouter]);
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
+// home 페이지
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/templates/home.html");
 });
 
+// main 페이지
 app.get("/main", (req, res) => {
   res.sendFile(__dirname + "/public/templates/main.html");
 });
 
+// 글 작성
 app.get("/post", (req, res) => {
   res.sendFile(__dirname + "/public/templates/post.html");
 });
 
+// 로그인
 app.get("/user", (req, res) => {
   res.sendFile(__dirname + "/public/templates/user.html");
 });
 
-app.get("/post/:post_id", (req, res) => {
-  res.sendFile(__dirname + "/public/templates/update.html");
+// 해당 게시글 조회
+app.get("/posts/:post_id", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
 app.listen(PORT, () => {
