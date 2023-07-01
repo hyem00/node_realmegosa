@@ -21,6 +21,7 @@ async function newsfeed() {
             let category = rows[i]["category"];
             let foodtype = rows[i]["foodtype"];
             let createdAt = rows[i]["createdAt"];
+            let a = createdAt.substring(0, 10);
             //닉네임 고치기
             //let nickname = rows[i]["nickname"];
 
@@ -33,8 +34,9 @@ async function newsfeed() {
            ${content}
               </p>
               <div class="data"></div>
-              <span class="date">${createdAt}</span>
-             <span class="nickname"></span>
+              <span class="date">${a}</span>
+             <span class="nickname">${nickname}</span>
+
             </div>
            </div>
             `;

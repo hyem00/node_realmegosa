@@ -14,3 +14,4 @@ function hideModal() {
   const modal = document.getElementById("login_modal");
   modal.classList.remove("show");
 }
+

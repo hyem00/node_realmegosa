@@ -21,6 +21,7 @@ function matjib() {
             let category = result[i]["category"];
             let foodtype = result[i]["foodtype"];
             let createdAt = result[i]["createdAt"];
+            let a = createdAt.substring(0, 10);
             //닉네임 고치기
             let nickname = result[i]["nickname"];
             let temp_html = `
@@ -31,7 +32,7 @@ function matjib() {
                ${content}
                   </p>
                   <div class="data"></div>
-                  <span class="date">${createdAt}</span>
+                  <span class="date">${a}</span>
                  <span class="nickname">${nickname}</span>
                 </div>
                </div>
