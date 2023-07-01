@@ -2,8 +2,6 @@ function updateBtn(post_id) {
   const config = {
     method: "get",
   };
-  console.log(post_id);
-
   fetch("http://localhost:8000/api/posts/" + post_id, config)
     .then((response) => response.json())
     .then((data) =>
@@ -24,9 +22,6 @@ function updateBtn(post_id) {
             let createdAt = rows[i]["createdAt"];
             //닉네임 고치기
             let nickname = rows[i]["nickname"];
-
-            console.log(createdAt);
-
             let temp_html = `
             <form id="post-form">
               <input type="text" id="title-input" name="title" placeholder="제목을 입력해주세요." value="${title}" required>
