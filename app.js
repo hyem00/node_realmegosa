@@ -34,7 +34,7 @@ app.get("/user", (req, res) => {
 });
 
 // 해당 게시글 조회
-app.get("/posts/:post_id", (req, res) => {
+app.get("/posts", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
