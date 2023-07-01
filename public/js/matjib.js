@@ -12,7 +12,7 @@ function matjib() {
         success: function (response) {
           let rows = response;
           $("#cardLists").empty();
-          const result = rows.find((x) => x.category === "matjib");
+          const result = rows.filter((x) => x.category === "matjib");
           for (let i = result.length - 1; i >= 0; i--) {
             let post_id = result[i]["post_id"];
             let user_id = result[i]["user_id"];
