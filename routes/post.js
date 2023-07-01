@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { Posts } = require("../models");
+const { Users } = require("../models");
 
 const authMiddleware = require("../middlewares/auth-middleware.js");
 
@@ -15,11 +16,11 @@ router.get("/posts", async (req, res) => {
       "content",
       "category",
       "foodtype",
-      //   "nickname",
+      "nickname",
       "createdAt",
       "updatedAt",
     ],
-    order: [["updatedAt", "DESC"]],
+    order: [["updatedAt", "ASC"]],
   });
 
   if (!allPosts.length) {
@@ -59,17 +60,17 @@ router.get("/posts/:post_id", async (req, res) => {
 // 게시글 작성
 router.post("/posts", authMiddleware, async (req, res) => {
   const { user_id } = res.locals.user;
-  // const user = await Users.findOne({ where: { user_id: user_id } });
-  // const { nickname } = await Users.findOne({ where: { user_id } });
+  const user = await Users.findOne({ where: { user_id: user_id } });
+
   const { title, content, category, foodtype } = req.body;
 
   const post = await Posts.create({
-    user_id: user_id,
+    user_id: user.user_id,
     title,
     content,
     category,
     foodtype,
-    //nickname: nickname,
+    nickname: user.nickname,
   });
 
   return res.status(201).json({ data: post });
@@ -89,13 +90,12 @@ router.put("/posts/:post_id", authMiddleware, async (req, res) => {
       success: false,
       errorMessage: "해당 게시글을 찾을 수 없습니다.",
     });
+  } else if (post.user_id !== user_id) {
+    return res.status(401).json({
+      success: false,
+      message: "권한이 없습니다.",
+    });
   }
-    else if (post.user_id !== user_id) {
-     return res.status(401).json({
-       success: false,
-       message: "권한이 없습니다.",
-     });
-   }
   await Posts.update(
     {
       title: title,
@@ -124,13 +124,9 @@ router.delete("/posts/:post_id", authMiddleware, async (req, res) => {
       success: false,
       errorMessage: "해당 게시글을 찾을 수 없습니다.",
     });
+  } else if (post.user_id !== user_id) {
+    return res.status(401).json({ message: "권한이 없습니다." });
   }
-   else if (post.user_id !== user_id) {
-     return res.status(401).json({
-       success: false,
-       message: "권한이 없습니다.",
-     });
-   }
   await Posts.destroy({ where: { post_id: post_id } });
   return res.status(200).json({
     success: true,
