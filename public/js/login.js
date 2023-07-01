@@ -61,8 +61,16 @@ loginForm.addEventListener("submit", async (e) => {
       function handleLoginButtonClick() {
         if (isLoggedIn()) {
           // 로그아웃 처리
-          localStorage.removeItem("token");
-          location.reload();
+          fetch("http://localhost:8000/api/logout", {
+            method: "GET",
+            })
+            .then((res) => res.json())
+            .then((res) => {
+            console.log(res);
+            alert("로그아웃 되었습니다.");
+            localStorage.removeItem("token");
+	          location.reload();
+            })
         }
       }
 
