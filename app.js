@@ -38,9 +38,19 @@ app.get("/posts/:post_id", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
+
 // 마이페이지;
 app.get("/mypage", (req, res) => {
   res.sendFile(__dirname + "/public/templates/mypage.html");
+
+// 홈쿡 카테고리 조회
+app.get("/category/homecook", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/category.html");
+});
+
+// 맛집 카테고리 조회
+app.get("/category/matjib", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/category.html");
 });
 
 app.listen(PORT, () => {
