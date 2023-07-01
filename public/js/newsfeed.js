@@ -1,8 +1,9 @@
-function newsfeed() {
+document.addEventListener("DOMContentLoaded", newsfeed());
+async function newsfeed() {
   const config = {
     method: "get",
   };
-  fetch("http://localhost:8000/api/posts", config)
+  await fetch("http://localhost:8000/api/posts", config)
     .then((response) => response.json())
     .then((data) =>
       $.ajax({
@@ -20,8 +21,9 @@ function newsfeed() {
             let category = rows[i]["category"];
             let foodtype = rows[i]["foodtype"];
             let createdAt = rows[i]["createdAt"];
+            let a = createdAt.substring(0, 10);
             //닉네임 고치기
-            let nickname = rows[i]["nickname"];
+            //let nickname = rows[i]["nickname"];
 
             let temp_html = `
             <div id="box" onclick="detailview(${post_id})">
@@ -32,8 +34,9 @@ function newsfeed() {
            ${content}
               </p>
               <div class="data"></div>
-              <span class="date">${createdAt}</span>
+              <span class="date">${a}</span>
              <span class="nickname">${nickname}</span>
+
             </div>
            </div>
             `;

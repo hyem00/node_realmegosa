@@ -23,32 +23,30 @@ function detailview(post_id) {
             let category = rows[i]["category"];
             let foodtype = rows[i]["foodtype"];
             let createdAt = rows[i]["createdAt"];
+            let a = createdAt.substring(0, 10);
             //닉네임 고치기
-            let nickname = rows[i]["nickname"];
+            //let nickname = rows[i]["nickname"];
 
             let temp_html = `
-              <div class="board_title">
-              <p>우리 음식으로 소통해요! "메뉴를 고민하는 사람들" , MEGOSA!</p>
-              </div>
-              <div class="board_view">
-               <div class="title">${title}</div>
-               <div class="info">
-                 <dl>
-                   <dt>카테고리</dt>
-                   <dd>${category}</dd>
-                 </dl>
-                 <dl>
-                   <dt>닉네임</dt>
-                   <dd></dd>
-                 </dl>
-                 <dl>
-                   <dt>작성일</dt>
-                   <dd>${createdAt}</dd>
-                 </dl>
-               </div>
-               <div class="cont">
-               ${content}
-               </div>
+
+            <div class="board_title">
+            <p>우리 음식으로 소통해요! "메뉴를 고민하는 사람들" , MEGOSA!</p>
+            </div>
+            <div class="board_view">
+             <div class="title">${title}</div>
+             <div class="info">
+               <dl>
+                 <dt>카테고리</dt>
+                 <dd>${category}</dd>
+               </dl>
+               <dl>
+                 <dt>닉네임</dt>
+                 <dd></dd>
+               </dl>
+               <dl>
+                 <dt>작성일</dt>
+                 <dd>${a}</dd>
+               </dl>
              </div>
              <div class="bt_wrap" id="bt_wrap">
               <button id="updateBtn" onclick="updateBtn(${post_id})">수정</button>
