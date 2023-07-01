@@ -13,13 +13,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+// router.post("/users", upload.single("image"), async (req, res) => {
+//   const imageUrl = req.file.location;
+// });
+
 // POST /api/user_profile
-router.post("/user_profile", async (req, res) => {
+router.post("/user_profile", upload.single("image"), async (req, res) => {
   try {
-    const { user_id, image_url, nickname, comment } = req.body;
+    const { user_id, nickname, comment } = req.body;
+    const imageUrl = req.file.location;
     const profile = await Users_profiles.create({
       user_id,
-      image_url,
+      image_url: imageUrl,
       nickname,
       comment,
     });

@@ -15,4 +15,3 @@ function deleteBtn(post_id) {
       }
     });
 }
-//

@@ -1,5 +1,10 @@
 const jwt = require("jsonwebtoken");
 const { Users } = require("../models");
+//s3 이미지 업로드
+// const upload = require('../modules/multer')
+
+// Single Image 처리
+// router.put('/post/modify', authUtil, upload.single('productImg'), exchangeController.modifyPost);
 
 // 사용자 인증 미들웨어
 module.exports = async (req, res, next) => {
