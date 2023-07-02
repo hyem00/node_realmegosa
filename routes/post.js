@@ -4,7 +4,7 @@ const router = express.Router();
 const { Users, Posts } = require("../models");
 
 const authMiddleware = require("../middlewares/auth-middleware.js");
-const upload = require("../middlewares/upload-middleware");
+
 // 최신 게시글 조회
 router.get("/posts", async (req, res) => {
   const allPosts = await Posts.findAll({
@@ -49,41 +49,33 @@ router.get("/posts/:post_id", async (req, res) => {
       errorMessage: "해당 게시글을 찾을 수 없습니다..",
     });
   }
-  console.log(post);
 
   return res.status(200).json(post);
 });
 
 // 게시글 작성
-router.post(
-  "/posts",
-  authMiddleware,
-  upload.single("image"),
-  async (req, res) => {
-    const { user_id } = res.locals.user;
-    const imageUrl = req.file.location;
-    const user = await Users.findOne({ where: { user_id: user_id } });
+router.post("/posts", authMiddleware, async (req, res) => {
+  const { user_id } = res.locals.user;
+  const user = await Users.findOne({ where: { user_id: user_id } });
 
-    const { title, content, category } = req.body;
+  const { title, content, category, foodtype } = req.body;
 
-    const post = await Posts.create({
-      user_id: user.user_id,
-      title,
-      content,
-      pimage_url: imageUrl,
-      category,
-      nickname: user.nickname,
-    });
+  const post = await Posts.create({
+    user_id: user.user_id,
+    title,
+    content,
+    category,
+    foodtype,
+    nickname: user.nickname,
+  });
 
-    return res.status(201).json(post);
-  }
-);
+  return res.status(201).json(post);
+});
 
 // 게시글 수정
 router.put("/posts/:post_id", authMiddleware, async (req, res) => {
   const { post_id } = req.params;
   const { user_id } = res.locals.user;
-  // const user = await Users_profiles.findOne({ where: { user_id: user_id } });
   const { title, content } = req.body;
 
   const post = await Posts.findOne({ where: { post_id: post_id } });
@@ -103,7 +95,6 @@ router.put("/posts/:post_id", authMiddleware, async (req, res) => {
     {
       title: title,
       content: content,
-      // nickname: user.nickname,
     },
     {
       where: { post_id: post_id },
@@ -148,11 +139,10 @@ router.get("/post/:category", async (req, res) => {
       "title",
       "content",
       "category",
-      //   "nickname",
       "createdAt",
       "updatedAt",
     ],
-    order: [["createdAt", "DESC"]],
+    order: [["updatedAt", "ASC"]],
   });
 
   if (!categoryPost.length) {
@@ -178,7 +168,7 @@ router.get("/posts/users/:user_id", async (req, res) => {
       "title",
       "content",
       "category",
-      //   "nickname",
+      "foodtype",
       "createdAt",
       "updatedAt",
     ],
@@ -200,7 +190,6 @@ router.get("/posts/users/:user_id", async (req, res) => {
 router.get("/:post_id", authMiddleware, async (req, res) => {
   const { user_id } = res.locals.user;
   const { post_id } = req.params;
-  console.log(req);
   const post = await Posts.findOne({ where: { post_id: post_id } });
 
   if (post.user_id !== user_id) {
@@ -216,85 +205,5 @@ router.get("/:post_id", authMiddleware, async (req, res) => {
     });
   }
 });
-
-// // foodtype 게시글 조회
-// router.get("/post/:foodtype", async (req, res) => {
-//   const { foodtype } = req.params;
-//   const foodtypePost = await Posts.findAll({
-//     where: { foodtype: foodtype },
-//     attributes: [
-//       "post_id",
-//       "user_id",
-//       "title",
-//       "content",
-//       "category",
-//       "foodtype",
-//       "nickname",
-//       "createdAt",
-//       "updatedAt",
-//     ],
-//     order: [["createdAt", "DESC"]],
-//   });
-
-//   if (!foodtypePost.length) {
-//     return res.status(404).json({
-//       errorMessage: "작성된 게시글이 없습니다.",
-//     });
-//   } else {
-//     return res.status(200).json({
-//       success: true,
-//       posts: categoryPost,
-//     });
-//   }
-// });
-
-// // 내 정보 작성
-// router.post("/users/Users_profiles", authMiddleware, async (req, res) => {
-//   const { user_id } = res.locals.user;
-//   const { nickname, comment, image_url } = req.body;
-
-//   const user = await Users_profiles.create({
-//     user_id: user_id,
-//     nickname: nickname,
-//     comment: comment,
-//     image_url: image_url,
-//   });
-
-//   return res.status(201).json({ data: user });
-// });
-
-// // 내 정보 수정
-// router.put("/user/Users_profiles/:profile_id", authMiddleware, async (req, res) => {
-//   const { profile_id } = req.params;
-//   const { user_id } = res.locals.user;
-//   const { nickname, comment, image_url } = req.body;
-
-//   const user = await Users_profiles.findOne({
-//     where: { profile_id: profile_id },
-//   });
-//   console.log(user.user_id);
-//   console.log(user_id);
-//   if (user.user_id !== user_id) {
-//     return res.status(401).json({
-//       success: false,
-//       message: "권한이 없습니다.",
-//     });
-//   } else if (user) {
-//     await Users_profiles.update(
-//       {
-//         nickname: nickname,
-//         comment: comment,
-//         image_url: image_url,
-//       },
-//       {
-//         where: { profile_id: profile_id },
-//       }
-//     );
-//     return res.status(200).json({
-//       success: true,
-//       message: "정보가 수정되었습니다.",
-//     });
-//   }
-// });
 
 module.exports = router;
