@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { Users, Posts } = require("../models");
-
+const upload = require("../middlewares/upload-middleware");
 const authMiddleware = require("../middlewares/auth-middleware.js");
 
 // 최신 게시글 조회
@@ -14,6 +14,7 @@ router.get("/posts", async (req, res) => {
       "title",
       "content",
       "category",
+      "pimage_url",
       "nickname",
       "createdAt",
       "updatedAt",
@@ -31,9 +32,9 @@ router.get("/posts", async (req, res) => {
 });
 
 // 게시글 상세 조회
-router.get("/posts/:post_id", async (req, res) => {
+router.get("/posts/:post_id", upload.single("image"), async (req, res) => {
   const { post_id } = req.params;
-
+  // const imageUrl = req.file.location;
   const post = await Posts.findOne({
     include: [
       {

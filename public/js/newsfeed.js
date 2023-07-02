@@ -13,12 +13,13 @@ function newsfeed() {
         let title = rows[i]["title"];
         let content = rows[i]["content"];
         let category = rows[i]["category"];
+        let pimage_url = rows[i]["pimage_url"];
         let createdAt = rows[i]["createdAt"];
         let a = createdAt.substring(0, 10);
         let nickname = rows[i]["nickname"];
         let temp_html = `
         <div id="box" onclick="datailpostBtn(${post_id})">
-         <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
+         <img class="img" src="${pimage_url}" alt="나중에 이미지">
         <p class="heading">${title}</p>
        <p class="texts">
        ${content}
