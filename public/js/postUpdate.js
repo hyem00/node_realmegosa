@@ -12,7 +12,7 @@ function postUpdate() {
       if (res.errorMessage === "해당 권한이 없습니다") {
         alert("해당 권한이 없습니다");
         location.href = `http://localhost:8000/posts/?post_id=${postId}`;
-      } else if (res.errorMessage === "로그인 후 이용 가능한 기능1입니다.") {
+      } else if (res.errorMessage === "로그인 후 이용 가능한 기능입니다.") {
         alert("로그인이 필요한 기능입니다");
         location.href = `http://localhost:8000/posts/?post_id=${postId}`;
       }
@@ -39,6 +39,7 @@ function postUpdate() {
       let temp_html = `
             <form id="post-form">
               <input type="text" id="title-input" name="title" placeholder="제목을 입력해주세요." value="${title}" required>
+              <input type="file" id="image" name="image">
               <select id ="category" name="category">
                 <option value="${category}"></option>
                 <option value="homecook">홈레시피</option>

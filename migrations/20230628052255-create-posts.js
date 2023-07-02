@@ -32,6 +32,7 @@ module.exports = {
       },
       pimage_url: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       nickname: {
         type: Sequelize.STRING,

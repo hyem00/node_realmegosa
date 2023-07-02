@@ -3,7 +3,7 @@ const router = express.Router();
 const { Users, Posts } = require("../models");
 const upload = require("../middlewares/upload-middleware");
 const authMiddleware = require("../middlewares/auth-middleware.js");
-// 최신 게시글 조회
+// 전체 게시글 조회
 router.get("/posts", async (req, res) => {
   const allPosts = await Posts.findAll({
     attributes: [
@@ -60,51 +60,45 @@ router.post(
       user_id: user.user_id,
       title,
       content,
-      pimage_url: imageUrl,
       category,
       nickname: user.nickname,
+      pimage_url: imageUrl,
     });
-    return res.redirect("/");
+    return res.status(201).json(post);
   }
 );
 // 게시글 수정
-router.put(
-  "/posts/:post_id",
-  authMiddleware,
-  upload.single("image"),
-  async (req, res) => {
-    const { post_id } = req.params;
-    const { user_id } = res.locals.user;
-    const userImage = req.file.location;
-    const { title, content } = req.body;
-    const post = await Posts.findOne({ where: { post_id: post_id } });
-    if (!post) {
-      return res.status(404).json({
-        success: false,
-        errorMessage: "해당 게시글을 찾을 수 없습니다.",
-      });
-    } else if (post.user_id !== user_id) {
-      return res.status(401).json({
-        success: false,
-        message: "권한이 없습니다.",
-      });
-    }
-    await Posts.update(
-      {
-        pimage_url: userImage,
-        title: title,
-        content: content,
-      },
-      {
-        where: { [Op.and]: [{ post_id }, { userId }] },
-      }
-    );
-    return res.status(200).json({
-      success: true,
-      message: "해당 게시글이 수정되었습니다.",
+router.put("/posts/:post_id", authMiddleware, async (req, res) => {
+  const { post_id } = req.params;
+  const { user_id } = res.locals.user;
+  const { title, content } = req.body;
+  console.log();
+  const post = await Posts.findOne({ where: { post_id: post_id } });
+  if (!post) {
+    return res.status(404).json({
+      success: false,
+      errorMessage: "해당 게시글을 찾을 수 없습니다.",
+    });
+  } else if (post.user_id !== user_id) {
+    return res.status(401).json({
+      success: false,
+      message: "권한이 없습니다.",
     });
   }
-);
+  await Posts.update(
+    {
+      title: title,
+      content: content,
+    },
+    {
+      where: { post_id: post_id },
+    }
+  );
+  return res.status(200).json({
+    success: true,
+    message: "해당 게시글이 수정되었습니다.",
+  });
+});
 // 게시글 삭제
 router.delete("/posts/:post_id", authMiddleware, async (req, res) => {
   const { post_id } = req.params;
