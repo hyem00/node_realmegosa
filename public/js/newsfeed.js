@@ -27,7 +27,6 @@ function newsfeed() {
           <div class="data"></div>
           <span class="date">${a}</span>
          <span class="nickname">${nickname}</span>
-
         </div>
        </div>
         `;
