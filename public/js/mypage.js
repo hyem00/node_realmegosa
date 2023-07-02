@@ -19,15 +19,15 @@ function mypage() {
   
         let temp_html = `
         <div class="profile_box1">
-          <input type="file" id="image" name="image" accept="image/*" alt="이미지 파일 없음">
-            <div class="right">
-                아이디 : <h1>id불러와야함 ㄱㄷ</h1>
-                닉네임 : <p>${nickname}</p>
-            </div>                
+          <div type="file" id="image" name="image" accept="image/*" alt="이미지 파일 없음"></div>
+          <div class="right">
+            아이디 : <h1>id불러와야함 ㄱㄷ</h1>
+            닉네임 : <p>${nickname}</p>
+          </div>                
         </div>
-        <div>
-          <textarea placeholder="코멘트를 입력해주세요." class="commenttext" id="commenttext">${comment}</textarea>
-        </div>`;
+        <div class="commenttext" id="commenttext">${comment}</div>
+        <button id="myupdateBtn" onclick="myupdate()">수정</button>
+        `;
         $("#profile_wrap").append(temp_html);
       });
 

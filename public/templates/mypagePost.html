@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,7 +23,7 @@
           <div id="searchModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>
-              <form>
+              <form onsubmit="return false">
                 <input class="serchinput" type="text" placeholder="검색어를 입력하세요">
                 <button type="submit">검색</button>
               </form>
@@ -34,7 +34,7 @@
             <div class="login_modal-content">
               <span class="login_close" onclick="hideModal()">&times;</span>
               <h2>로그인</h2>
-              <form>
+              <form onsubmit="return false;">
                 <label for="username">&nbsp;&nbsp;&nbsp;아이디 : </label>
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">비밀번호 : </label>
@@ -49,27 +49,16 @@
         </ul>
       </header>
     </div>
-      <div id="profile_wrap">
-        <form action="/api/posts" method="post" enctype="multipart/form-data">
-        <div class="profile_box1">
-            <input type="file" id="image" name="image"/>
-          <div class="right">
-            아이디 : <h1>cutyMinji</h1>
-            <input type="text" id="inputNickname" name="title" placeholder="변경할 닉네임을 입력해주세요." required>
-           </div>
-        </div>
-          <textarea placeholder="코멘트를 입력해주세요." class="commenttext"></textarea>
+    <form id="profile_wrap" onsubmit="return false;">
     </form>
-      </div>
-      <button type="submit" class="commentBtn">확인</button>
-
     <script src=../js/time.js defer></script>
     <script src="../js/search.js" defer></script>
     <script src="../js/home.js" defer></script>
     <script src="../js/allBtnLoad.js" defer></script>
     <script src="../js/post.js" defer></script>
     <script src="../js/mypageBtn.js" defer></script>
+    <script src="../js/mypageupdateBtn.js" defer></script>
     <script src="../js/login.js" defer></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </body>
-</html> -->
+</html>

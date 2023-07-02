@@ -5,7 +5,7 @@ const { Users, Posts } = require("../models");
 const upload = require("../middlewares/upload-middleware");
 const authMiddleware = require("../middlewares/auth-middleware.js");
 
-// 최신 게시글 조회
+// 전체 게시글 조회
 router.get("/posts", async (req, res) => {
   const allPosts = await Posts.findAll({
     attributes: [
@@ -21,13 +21,13 @@ router.get("/posts", async (req, res) => {
     ],
     order: [["updatedAt", "ASC"]],
   });
-
+  console.log(allPosts)
   if (!allPosts.length) {
     return res.status(404).json({
       errorMessage: "작성된 게시글이 없습니다.",
     });
   } else {
-    return res.status(200).json(allPosts);
+    return res.status(200).json({message:"성공하였습니다."});
   }
 });
 
@@ -158,23 +158,24 @@ router.get("/post/:category", async (req, res) => {
   }
 });
 
-router.get("/:post_id", authMiddleware, async (req, res) => {
-  const { user_id } = res.locals.user;
-  const { post_id } = req.params;
-  const post = await Posts.findOne({ where: { post_id: post_id } });
 
-  if (post.user_id !== user_id) {
-    return res.status(404).json({
-      success: false,
-      errorMessage: "해당 권한이 없습니다",
-    });
-  }
-  if (!user_id) {
-    return res.status(404).json({
-      success: false,
-      errorMessage: "해당 권한이 없습니다",
-    });
-  }
-});
+// router.get("/:post_id", authMiddleware, async (req, res) => {
+//   const { user_id } = res.locals.user;
+//   const { post_id } = req.params;
+//   const post = await Posts.findOne({ where: { post_id: post_id } });
+
+//   if (post.user_id !== user_id) {
+//     return res.status(404).json({
+//       success: false,
+//       errorMessage: "해당 권한이 없습니다",
+//     });
+//   }
+//   if (!user_id) {
+//     return res.status(404).json({
+//       success: false,
+//       errorMessage: "해당 권한이 없습니다",
+//     });
+//   }
+// });
 
 module.exports = router;

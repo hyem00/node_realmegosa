@@ -40,7 +40,7 @@ app.get("/posts", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
-// 수정 페이지
+// 게시글 수정 페이지
 app.get("/posts/update", (req, res) => {
   res.sendFile(__dirname + "/public/templates/update.html");
 });
@@ -50,10 +50,17 @@ app.get("/myuser", (req, res) => {
   res.sendFile(__dirname + "/public/templates/mypage.html");
 });
 
+// 마이페이지 수정 페이지
+app.get("/myuser/test", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/mypagePost.html");
+});
+
 // 홈쿡 카테고리 조회
 app.get("/category", (req, res) => {
   res.sendFile(__dirname + "/public/templates/category.html");
 });
+
+
 
 // 맛집 카테고리 조회
 // app.get("/category/matjib", (req, res) => {
