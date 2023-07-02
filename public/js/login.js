@@ -1,11 +1,9 @@
 const loginForm = document.getElementById("login");
-
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const loginPayload = new FormData(loginForm);
   const mloginForm = {};
   loginPayload.forEach((value, key) => (mloginForm[key] = value));
-
   fetch("http://localhost:8000/api/login", {
     method: "POST",
     headers: {
@@ -23,11 +21,10 @@ loginForm.addEventListener("submit", (e) => {
         alert("로그인 되었습니다.");
         hideModal();
         localStorage.setItem("token", res.token);
-        location.reload();
+        updateButton(); // 버튼 업데이트
       }
     });
 });
-
 Kakao.init("683d473caa873ed84400194b1b27aab0");
 document.getElementById("kakao-login-btn").addEventListener("click", () => {
   // 카카오 로그인 실행
@@ -40,42 +37,59 @@ document.getElementById("kakao-login-btn").addEventListener("click", () => {
           const kakao_account = res.kakao_account;
           console.log("카카오 로그인");
           hideModal();
-          location.reload();
+          localStorage.setItem(
+            "kakao_eacc25aabf6087a59d0785e34de0a93b",
+            "kakao_token"
+          ); // 카카오 토큰 저장
+          updateButton(); // 버튼 업데이트
         },
       });
     },
   });
 });
 
-function KakaoLogout() {
-  Kakao.Auth.logout(function () {
-    console.log("Kakao 로그아웃 완료");
-    // 로그아웃 후에 수행할 작업을 추가하면 됩니다.
-  });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-  logincheck();
+  updateButton();
 });
 
-function logincheck() {
+function updateButton() {
+  master;
   const checkToken = document.cookie.split("=")[1];
   const kakaoToken = localStorage.getItem(
     "kakao_eacc25aabf6087a59d0785e34de0a93b"
   );
   const topBar = document.querySelector(".signBox");
-  let temp = ``;
+
+  const existingButtons = document.querySelectorAll(".dynamic-button");
+
+  existingButtons.forEach((button) => {
+    button.remove();
+  });
+
   if (checkToken || kakaoToken) {
-    temp = `<li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
-            <button onclick="mypage()">마이페이지</button>
-            <button onclick="logout()">로그아웃</button>
-          `;
+    const myPageButton = document.createElement("button");
+    myPageButton.innerHTML = "마이페이지";
+    myPageButton.className = "dynamic-button";
+    myPageButton.addEventListener("click", mypage);
+    topBar.appendChild(myPageButton);
+    const logoutButton = document.createElement("button");
+    logoutButton.innerHTML = "로그아웃";
+    logoutButton.className = "dynamic-button";
+    logoutButton.addEventListener("click", logout);
+    topBar.appendChild(logoutButton);
   } else {
-    temp = `<button onclick="join()">회원가입</button>
-            <button onclick="showModal()">로그인</button>
-          `;
+    const joinButton = document.createElement("button");
+    joinButton.innerHTML = "회원가입";
+    joinButton.className = "dynamic-button";
+    joinButton.addEventListener("click", join);
+    topBar.appendChild(joinButton);
+
+    const loginButton = document.createElement("button");
+    loginButton.innerHTML = "로그인";
+    loginButton.className = "dynamic-button";
+    loginButton.addEventListener("click", showModal);
+    topBar.appendChild(loginButton);
   }
-  topBar.innerHTML += temp;
 }
 
 function mypage() {
@@ -90,6 +104,8 @@ function logout() {
     .then((res) => {
       alert("로그아웃 되었습니다.");
       localStorage.removeItem("token");
-      location.reload();
+
+      localStorage.removeItem("kakao_eacc25aabf6087a59d0785e34de0a93b");
+      updateButton(); // 버튼 업데이트
     });
 }

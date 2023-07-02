@@ -19,12 +19,13 @@ function categorytype() {
         let title = result[i]["title"];
         let content = result[i]["content"];
         let category = result[i]["category"];
+        let pimage_url = result[i]["pimage_url"];
         let createdAt = result[i]["createdAt"];
         let a = createdAt.substring(0, 10);
         let nickname = result[i]["nickname"];
         let temp_html = `
             <div id="box" onclick="datailpostBtn(${post_id})">
-             <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
+            <img id="img" src="${pimage_url}" alt="나중에 이미지">
             <p class="heading">${title}</p>
            <p class="texts">
            ${content}
