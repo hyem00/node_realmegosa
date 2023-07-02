@@ -52,7 +52,7 @@ router.get("/posts/:post_id", async (req, res) => {
   }
   console.log(post);
 
-  return res.status(200).json(result);
+  return res.status(200).json(post);
 });
 
 // 게시글 작성

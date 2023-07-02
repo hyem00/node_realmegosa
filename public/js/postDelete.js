@@ -1,8 +1,6 @@
-function deleteBtn() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const postId = urlParams.get("post_id");
-
-  fetch(`http://localhost:8000/api/posts/${postId}`, {
+//게시글 삭제 버튼
+function postDelete(post_id) {
+  fetch("http://localhost:8000/api/posts/" + post_id, {
     method: "DELETE",
   })
     .then((res) => res.json())
@@ -13,8 +11,8 @@ function deleteBtn() {
       } else if (res.message === "권한이 없습니다.") {
         alert("권한이 없습니다.");
       } else {
-        alert("삭제 완료.");
-        location.href = `http://localhost:8000/main`;
+        alert("삭제완료.");
+        location.href = "main";
       }
     });
 }

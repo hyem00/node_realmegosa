@@ -1,8 +1,3 @@
-function startBtn() {
-  location.href = "main";
-}
-////////////////////
-
 // 모달 창 보이기
 function showModal() {
   const modal = document.getElementById("login_modal");
