@@ -18,7 +18,7 @@
           <li id="date"></li>
           <li id="day"></li>
           <li id="time"></li>
-          <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
+          <!-- <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li> -->
           <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
           <div id="searchModal" class="modal">
             <div class="modal-content">
@@ -48,30 +48,15 @@
           <li><button onclick="join()">회원가입</button></li>
         </ul>
       </header>
-        <div id="profile_wrap">
-            <div class="profile_box1">
-                    <div class="photo"><img src="../img/뉴진스 민지.png" alt=""></div>
-                <div class="right">
-                    아이디 : <h1>cutyMinji</h1>
-                    닉네임 : <p>민지공듀</p>
-                </div>
-                <button type="button" id="open_close">열기</button>
-                <button type="button" id="correction">수정</button>
-            </div>
-
-        <div class="profile_box2">
-            <a href="https://github.com/hyem00/node_realmegosa.git">GitHub</a>
-            <a href="#">블로그</a>
-            <textarea placeholder="코멘트를 입력해주세요." class="commenttext"></textarea>
-            <button type="submit" class="commentBtn">확인</button>
+      <form><div id="profile_wrap">
+        <div class="profile_box1">
+          <input type="file" id="image" name="image" accept="image/*" alt="이미지 파일 없음">
+            <div class="right">
+                아이디 : <h1>cutyMinji</h1>
+                닉네임 : <p>민지공듀</p>
+            </div>                
         </div>
-    </div>
-
-    <div id="mypost">
-        <div class="viewmypost">내 게시글 조회</div>
-        <section id="cardLists">
-          
-    </div>
+        <div><textarea placeholder="코멘트를 입력해주세요." class="commenttext" id="commenttext"></textarea></div></form>
 
     <script src=../js/time.js defer></script>
     <script src="../js/search.js" defer></script>

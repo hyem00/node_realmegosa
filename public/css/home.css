@@ -48,8 +48,8 @@ header ul li {
 }
 
 header ul li img {
-  width: 30px; /* 원하는 가로 크기로 조절 */
-  height: 30px; /* 원하는 세로 크기로 조절 */
+  width: 30px !important;
+  height: 30px !important;
   cursor: pointer;
 }
 
@@ -178,4 +178,25 @@ button {
   width: 35px;
   height: 35px;
   margin-left: 30px;
+}
+
+/* 로그인 회원가입 로그아웃 마이페이지 요소 위치 조정 */
+.signBox {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic-button {
+  margin-right: 10px;
+}
+
+#image-li {
+  margin-left: 10px;
+}
+
+/* 이미지 요소 스타일 */
+#image-li img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
