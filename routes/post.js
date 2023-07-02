@@ -60,7 +60,6 @@ router.post(
   upload.single("image"),
   async (req, res) => {
     const { user_id } = res.locals.user;
-    console.log(user_id);
     const imageUrl = req.file.location;
     const user = await Users.findOne({ where: { user_id: user_id } });
     const { title, content, category } = req.body;
@@ -69,8 +68,8 @@ router.post(
       user_id: user.user_id,
       title,
       content,
-      pimage_url: imageUrl,
       category,
+      pimage_url: imageUrl,
       nickname: user.nickname,
     });
 
