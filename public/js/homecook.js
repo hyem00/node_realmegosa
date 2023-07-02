@@ -20,7 +20,6 @@ function categorytype() {
         let title = result[i]["title"];
         let content = result[i]["content"];
         let category = result[i]["category"];
-        let foodtype = result[i]["foodtype"];
         let createdAt = result[i]["createdAt"];
         let a = createdAt.substring(0, 10);
         let nickname = result[i]["nickname"];

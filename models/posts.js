@@ -39,9 +39,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         // allowNull: false,
       },
-      foodtype: {
+      pimage_url: {
         type: DataTypes.STRING,
-        // allowNull: false,
       },
       nickname: {
         type: DataTypes.STRING,

@@ -13,7 +13,6 @@ function newsfeed() {
         let title = rows[i]["title"];
         let content = rows[i]["content"];
         let category = rows[i]["category"];
-        let foodtype = rows[i]["foodtype"];
         let createdAt = rows[i]["createdAt"];
         let a = createdAt.substring(0, 10);
         let nickname = rows[i]["nickname"];
