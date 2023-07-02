@@ -1,4 +1,6 @@
-function update(post_id) {
+function update() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get("post_id");
   const form = document.getElementById("post-form");
 
   form.addEventListener("submit", async (e) => {
@@ -8,7 +10,7 @@ function update(post_id) {
     const myForm = {};
     await payload.forEach((value, key) => (myForm[key] = value));
 
-    fetch("http://localhost:8000/api/posts/" + post_id, {
+    fetch(`http://localhost:8000/api/posts/${postId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -24,9 +26,8 @@ function update(post_id) {
           alert("권한이 없습니다.");
         } else {
           alert("수정완료.");
-          location.href = "main";
+          location.href = `http://localhost:8000/main`;
         }
       });
   });
 }
-//

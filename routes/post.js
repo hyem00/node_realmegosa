@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { Posts } = require("../models");
-const { Users } = require("../models");
+const { Users, Posts } = require("../models");
 
 const authMiddleware = require("../middlewares/auth-middleware.js");
 
@@ -36,25 +35,24 @@ router.get("/posts", async (req, res) => {
 router.get("/posts/:post_id", async (req, res) => {
   const { post_id } = req.params;
 
-  const post = await Posts.findOne({ where: { post_id: post_id } });
+  const post = await Posts.findOne({
+    include: [
+      {
+        model: Users,
+        attributes: ["nickname"],
+      },
+    ],
+    where: { post_id: post_id },
+  });
 
   if (!post) {
     return res.status(404).json({
       errorMessage: "해당 게시글을 찾을 수 없습니다..",
     });
-  } else {
-    const result = {
-      post_id: post.post_id,
-      title: post.title,
-      content: post.content,
-      category: post.category,
-      createdAt: post.createdAt,
-      updatedAt: post.updatedAt,
-      //   nickname: post.nickname
-    };
-
-    return res.status(200).json(result);
   }
+  console.log(post);
+
+  return res.status(200).json(post);
 });
 
 // 게시글 작성
@@ -73,7 +71,7 @@ router.post("/posts", authMiddleware, async (req, res) => {
     nickname: user.nickname,
   });
 
-  return res.status(201).json({ data: post });
+  return res.status(201).json(post);
 });
 
 // 게시글 수정
