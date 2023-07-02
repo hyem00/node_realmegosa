@@ -19,7 +19,6 @@ function newsfeed() {
         let nickname = rows[i]["nickname"];
         let temp_html = `
         <div id="box" onclick="datailpostBtn(${post_id})">
-
          <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
         <p class="heading">${title}</p>
        <p class="texts">

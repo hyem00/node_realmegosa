@@ -25,7 +25,7 @@ function categorytype() {
         let a = createdAt.substring(0, 10);
         let nickname = result[i]["nickname"];
         let temp_html = `
-            <div id="box" data-post-id="${post_id}">
+            <div id="box" onclick="datailpostBtn(${post_id})">
              <img class="img" src="../img/pexels-photo-3138578.jpeg" alt="나중에 이미지">
             <p class="heading">${title}</p>
            <p class="texts">
