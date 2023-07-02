@@ -21,7 +21,7 @@ function detailpost() {
       let title = rows["title"];
       let content = rows["content"];
       let category = rows["category"];
-      let pimage_url = rews["pimage_url"];
+      let pimage_url = rows["pimage_url"];
       let createdAt = rows["createdAt"];
       let nickname = rows["nickname"];
 

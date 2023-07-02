@@ -53,14 +53,16 @@ function KakaoLogout() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   logincheck();
 });
 
 function logincheck() {
-  const checkToken = document.cookie.split('=')[1];
-  const kakaoToken = localStorage.getItem("kakao_eacc25aabf6087a59d0785e34de0a93b");
-  const topBar = document.querySelector('.signBox');
+  const checkToken = document.cookie.split("=")[1];
+  const kakaoToken = localStorage.getItem(
+    "kakao_eacc25aabf6087a59d0785e34de0a93b"
+  );
+  const topBar = document.querySelector(".signBox");
   let temp = ``;
   if (checkToken || kakaoToken) {
     temp = `<li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
@@ -81,12 +83,13 @@ function mypage() {
 
 function logout() {
   fetch("http://localhost:8000/api/logout", {
-  method: "GET",
+    method: "GET",
   })
-  .then((res) => res.json())
-  .then((res) => {
-  alert("로그아웃 되었습니다.");
-  localStorage.removeItem("token");
-  location.reload();
-  })
+    .then((res) => res.json())
+    .then((res) => {
+      alert("로그아웃 되었습니다.");
+      localStorage.removeItem("token");
+      localStorage.removeItem("kakao_eacc25aabf6087a59d0785e34de0a93b");
+      location.reload();
+    });
 }
