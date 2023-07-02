@@ -26,8 +26,10 @@ function mypage() {
             </div>                
         </div>
         <div>
-          <textarea placeholder="코멘트를 입력해주세요." class="commenttext" id="commenttext">${comment}</textarea>
-        </div>`;
+          <textarea placeholder="소개글을 작성해주세요." class="commenttext" id="commenttext">${comment}</textarea>
+        </div>
+        <button type="submit" id="myupdateBtn" onclick="myupdateBtn()">수정</button>
+        `;
         $("#profile_wrap").append(temp_html);
       });
 
