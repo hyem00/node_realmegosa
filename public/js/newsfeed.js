@@ -19,7 +19,7 @@ function newsfeed() {
         let nickname = rows[i]["nickname"];
         let temp_html = `
         <div id="box" onclick="datailpostBtn(${post_id})">
-         <img class="img" src="${pimage_url}" alt="나중에 이미지">
+         <img id="img" src="${pimage_url}" alt="나중에 이미지">
         <p class="heading">${title}</p>
        <p class="texts">
        ${content}
@@ -35,3 +35,4 @@ function newsfeed() {
       }
     });
 }
+newsfeed();
