@@ -45,7 +45,9 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
 config/
+middleware/upload-middleware.js
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
