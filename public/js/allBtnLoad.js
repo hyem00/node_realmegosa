@@ -3,8 +3,8 @@ function datailpostBtn(post_id) {
   location.href = `http://localhost:8000/posts/?post_id=${post_id}`;
 }
 
-// datailpost.html 열리는 버튼
-function postUpdate(post_id) {
+// update.html 열리는 버튼
+function postUpdateBtn(post_id) {
   location.href = `http://localhost:8000/posts/update/?post_id=${post_id}`;
 }
 

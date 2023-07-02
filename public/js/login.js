@@ -1,10 +1,10 @@
 const loginForm = document.getElementById("login");
 
-loginForm.addEventListener("submit", async (e) => {
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const loginPayload = new FormData(loginForm);
   const mloginForm = {};
-  await loginPayload.forEach((value, key) => (mloginForm[key] = value));
+  loginPayload.forEach((value, key) => (mloginForm[key] = value));
 
   fetch("http://localhost:8000/api/login", {
     method: "POST",
@@ -24,8 +24,8 @@ loginForm.addEventListener("submit", async (e) => {
         alert("로그인 되었습니다.");
         hideModal();
         localStorage.setItem("token", res.token);
+        location.reload();
       }
-
       // 로그인 상태 확인 함수
       function isLoggedIn() {
         const token = localStorage.getItem("token");
