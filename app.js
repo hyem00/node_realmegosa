@@ -38,6 +38,11 @@ app.get("/posts", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
+// 수정 페이지
+app.get("/posts/update", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/update.html");
+});
+
 // 마이페이지;
 app.get("/mypage", (req, res) => {
   res.sendFile(__dirname + "/public/templates/mypage.html");
