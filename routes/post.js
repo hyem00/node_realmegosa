@@ -206,6 +206,12 @@ router.get("/:post_id", authMiddleware, async (req, res) => {
       errorMessage: "해당 권한이 없습니다",
     });
   }
+  if (!user_id) {
+    return res.status(404).json({
+      success: false,
+      errorMessage: "해당 권한이 없습니다",
+    });
+  }
 });
 
 // // foodtype 게시글 조회
