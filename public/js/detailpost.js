@@ -50,7 +50,7 @@ function detailpost() {
                    </div>
                  </div>
                  <div class="bt_wrap" id="bt_wrap">
-                  <button id="updateBtn" onclick="postUpdate(${post_id})">수정</button>
+                  <button id="updateBtn" onclick="postUpdateBtn(${post_id})">수정</button>
                   <button id="deleteBtn" onclick="deleteBtn(${post_id})">삭제</button>
                  </div>
                 `;
