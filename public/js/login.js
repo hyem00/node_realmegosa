@@ -85,3 +85,29 @@ loginForm.addEventListener("submit", async (e) => {
       hideJoinButton();
     });
 });
+
+Kakao.init("683d473caa873ed84400194b1b27aab0");
+document.getElementById("kakao-login-btn").addEventListener("click", () => {
+  // 카카오 로그인 실행
+  Kakao.Auth.loginForm({
+    scope: "profile_nickname, account_email, gender, profile_image",
+    success: function (authObj) {
+      console.log(authObj);
+      Kakao.API.request({
+        url: "/v2/user/me",
+        success: (res) => {
+          const kakao_account = res.kakao_account;
+          console.log(kakao_account);
+          hideModal();
+        },
+      });
+    },
+  });
+});
+
+function KakaoLogout() {
+  Kakao.Auth.logout(function () {
+    console.log("Kakao 로그아웃 완료");
+    // 로그아웃 후에 수행할 작업을 추가하면 됩니다.
+  });
+}
