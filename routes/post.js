@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { Users, Posts } = require("../models");
-
+const upload = require("../middlewares/upload-middleware");
 const authMiddleware = require("../middlewares/auth-middleware.js");
 
 // 최신 게시글 조회
