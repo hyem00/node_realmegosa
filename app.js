@@ -51,7 +51,7 @@ app.get("/myuser", (req, res) => {
 });
 
 // 마이페이지 수정 페이지
-app.get("/users/update", (req, res) => {
+app.get("/myuser/test", (req, res) => {
   res.sendFile(__dirname + "/public/templates/mypagePost.html");
 });
 

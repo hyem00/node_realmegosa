@@ -55,44 +55,45 @@ router.get("/posts/myuser", authMiddleware, async (req, res) => {
 });
 
 // POST /api/user_profile
-router.post("/user_profile", upload.single("image"), async (req, res) => {
-  try {
-    const { user_id, nickname, comment } = req.body;
-    const imageUrl = req.file.location;
-    const profile = await Users_profiles.create({
-      user_id,
-      image_url: imageUrl,
+// router.post("/user_profile", upload.single("image"), async (req, res) => {
+//   try {
+//     const { user_id, nickname, comment } = req.body;
+//     const imageUrl = req.file.location;
+//     const profile = await Users_profiles.create({
+//       user_id,
+//       image_url: imageUrl,
+//       nickname,
+//       comment,
+//     });
+//     res.status(201).json(profile);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "서버 오류" });
+//   }
+// });
+
+// 유저,유저프로필 수정
+router.put("/myuser", authMiddleware, async (req, res) => {
+  console.log(req)
+  const { user_id } = res.locals.user
+  const { nickname, comment } = req.body;
+  
+  await Users_profiles.update(
+    {
       nickname,
-      comment,
-    });
-    res.status(201).json(profile);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "서버 오류" });
-  }
-});
-
-// PUT /api/user_profile/:id
-router.put("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { image_url, nickname, comment } = req.body;
-
-    const profile = await Users_profiles.findByPk(id);
-    if (!profile) {
-      return res.status(404).json({ message: "프로필을 찾을 수 없습니다." });
+      comment
     }
-
-    profile.image_url = image_url;
-    profile.nickname = nickname;
-    profile.comment = comment;
-    await profile.save();
-
-    res.json(profile);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "서버 오류" });
-  }
+   ,{ where: { user_id: user_id } });
+  await Users.update(
+    {
+      nickname,
+      comment
+    }
+   ,{ where: { user_id: user_id } });
+  return res.status(200).json({
+    success: true,
+    message: "나의 정보가 수정되었습니다.",
+  });
 });
 
 // DELETE /api/user_profile/:id
