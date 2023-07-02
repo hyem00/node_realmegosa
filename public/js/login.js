@@ -76,6 +76,7 @@ function updateButton() {
     logoutButton.className = "dynamic-button";
     logoutButton.addEventListener("click", logout);
     topBar.appendChild(logoutButton);
+
   } else {
     const joinButton = document.createElement("button");
     joinButton.innerHTML = "회원가입";
@@ -97,7 +98,9 @@ function mypage() {
 
 function logout() {
   fetch("http://localhost:8000/api/logout", {
+
     method: "GET",
+
   })
     .then((res) => res.json())
     .then((res) => {
