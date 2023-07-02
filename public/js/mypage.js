@@ -1,7 +1,4 @@
 function mypage() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get("user_id");
-  
     const config = {
       method: "GET",
       headers: {
@@ -9,7 +6,7 @@ function mypage() {
       },
     };
   
-    fetch(`http://localhost:8000/api/user/${userId}`, config)
+    fetch("http://localhost:8000/apis/myuser", config)
       .then((response) => {
         return response.json();
       })
@@ -21,30 +18,26 @@ function mypage() {
         let image_url = rows.image_url;
   
         let temp_html = `
-            <div class="profile_box1">
-                <div class="photo"><img src="${image_url}" ></div>
-                <div class="right">
-                    아이디 : <h1>${category}i</h1>
-                    닉네임 : <p>${nickname}</p>
-                </div>
-                <button type="button" id="open_close">열기</button>
-                <button type="button" id="correction">수정</button>
-            </div>
-            <div class="profile_box2">
-                <a href="https://github.com/hyem00/node_realmegosa.git">GitHub</a>
-                <a href="#">블로그</a>
-                <textarea placeholder="코멘트를 입력해주세요." class="commenttext">${comment}</textarea>
-                <button type="submit" class="commentBtn">확인</button>
-            </div>`;
+        <div class="profile_box1">
+          <input type="file" id="image" name="image" accept="image/*" alt="이미지 파일 없음">
+            <div class="right">
+                아이디 : <h1>id불러와야함 ㄱㄷ</h1>
+                닉네임 : <p>${nickname}</p>
+            </div>                
+        </div>
+        <div>
+          <textarea placeholder="코멘트를 입력해주세요." class="commenttext" id="commenttext">${comment}</textarea>
+        </div>`;
         $("#profile_wrap").append(temp_html);
       });
 
-      fetch(`http://localhost:8000/api/posts/${userId}`, config)
+      fetch("http://localhost:8000/apis/posts/myuser", config)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let rows = data
+        $("#cardLists").empty();
         for (let i = rows.length - 1; i >= 0; i--) {
             let post_id = rows[i]["post_id"];
             let title = rows[i]["title"];
@@ -66,3 +59,5 @@ function mypage() {
         }
     });
 }
+
+mypage()

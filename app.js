@@ -10,7 +10,8 @@ const PORT = 8000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
-app.use("/api", [usersRouter, postRouter, user_profileRouter]);
+app.use("/api", [usersRouter, postRouter]);
+app.use("/apis", [user_profileRouter]);
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
@@ -45,7 +46,7 @@ app.get("/posts/update", (req, res) => {
 });
 
 // 마이페이지;
-app.get("/mypage", (req, res) => {
+app.get("/myuser", (req, res) => {
   res.sendFile(__dirname + "/public/templates/mypage.html");
 });
 

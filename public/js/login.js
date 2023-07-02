@@ -115,7 +115,7 @@ function updateButton() {
 }
 
 function mypage() {
-  location.href = "mypage";
+  location.href = `http://localhost:8000/myuser`;
 }
 
 function logout() {

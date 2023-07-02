@@ -158,37 +158,6 @@ router.get("/post/:category", async (req, res) => {
   }
 });
 
-// 내가 쓴 게시글 조회
-router.get("/posts/:user_id", async (req, res) => {
-  const { user_id } = req.params;
-  const userPosts = await Posts.findAll({
-    include: [
-      {
-        model: Users,
-        attributes: ["nickname"]
-      }
-    ],
-    where: { user_id: user_id },
-    attributes: [
-      "post_id",
-      "user_id",
-      "title",
-      "content",
-      "category",
-      "pimage_url",
-      "createdAt",
-      "updatedAt"
-    ],
-    order: [["updatedAt", "ASC"]],
-  });
-  if (!userPosts.length) {
-    return res.status(404).json({
-      errorMessage: "작성된 게시글이 없습니다.",
-    });
-  }
-  return res.status(200).json(userPosts);
-});
-
 router.get("/:post_id", authMiddleware, async (req, res) => {
   const { user_id } = res.locals.user;
   const { post_id } = req.params;
