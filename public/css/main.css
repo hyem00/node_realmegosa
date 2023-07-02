@@ -29,6 +29,7 @@ header {
 
 header > h2 {
   margin-left: 20px;
+  cursor: pointer;
 }
 
 header > nav {
@@ -56,6 +57,7 @@ header ul > li {
   width: 800px;
   overflow: hidden;
   margin-top: 50px;
+  cursor: pointer;
 }
 
 .menu > li {

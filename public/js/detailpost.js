@@ -31,7 +31,7 @@ function detailpost() {
                   </div>
                   <div class="board_view">
                    <div class="title">${title}</div>
-                   <img src="${pimage_url}"/>
+                   <img src="${pimage_url}" id="imgUrl"/>
                    <div class="info">
                      <dl>
                        <dt>카테고리</dt>
