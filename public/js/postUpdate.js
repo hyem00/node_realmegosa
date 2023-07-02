@@ -32,7 +32,7 @@ function postUpdate() {
               <textarea id="content-input" name="content" placeholder="당신의 음식이야기를 들려주세요." required>${content}</textarea>
               <div class="postBtn">
                 <button type="submit" id="submitBtn" onclick="update(${post_id})">게시글 수정 완료</button>
-                <button type="button" id="cancelBtn" onclick="deleteBtn(${post_id})">취소</button>
+                <button type="button" id="cancelBtn" onclick="datailpostBtn(${post_id})">취소</button>
               </div>
             </form>
             `;
