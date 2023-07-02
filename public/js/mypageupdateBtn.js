@@ -1,5 +1,4 @@
 function test() {
-
 const mynickname = document.querySelector("#nicknamedy").value
 const commenttext = document.querySelector("#commenttext").value
 console.log(mynickname )
@@ -24,3 +23,4 @@ console.log(commenttext )
             }
     });
 }
+

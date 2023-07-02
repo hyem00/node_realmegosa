@@ -28,7 +28,7 @@ function category(category) {
 }
 
 function myupdate() {
-  location.href = "http://localhost:8000/myuser/test"
+  location.href = "http://localhost:8000/myuser/test";
 }
 
 // function updateBtn(post_id) {
