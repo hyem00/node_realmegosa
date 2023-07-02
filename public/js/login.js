@@ -25,6 +25,7 @@ loginForm.addEventListener("submit", (e) => {
       }
     });
 });
+
 Kakao.init("683d473caa873ed84400194b1b27aab0");
 document.getElementById("kakao-login-btn").addEventListener("click", () => {
   // 카카오 로그인 실행
@@ -114,7 +115,7 @@ function updateButton() {
 }
 
 function mypage() {
-  location.href = "mypage";
+  location.href = `http://localhost:8000/myuser`;
 }
 
 function logout() {

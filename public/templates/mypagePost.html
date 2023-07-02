@@ -1,16 +1,14 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>내 프로필
     </title>
-    <link rel="stylesheet" type="text/css" href="../css/home.css" />
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link rel="stylesheet" type="text/css" href="../css/post.css" />
     <link rel="stylesheet" type="text/css" href="../css/mypage.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </head>
   <body>
     <div class="intro">
@@ -20,7 +18,7 @@
           <li id="date"></li>
           <li id="day"></li>
           <li id="time"></li>
-          <!-- <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li> -->
+          <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
           <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
           <div id="searchModal" class="modal">
             <div class="modal-content">
@@ -31,38 +29,47 @@
               </form>
             </div>
           </div>
-          <div class="signBox"></div>
+          <li> <button onclick="showModal()">로그인</button></li>
           <div id="login_modal" class="login_modal">
             <div class="login_modal-content">
               <span class="login_close" onclick="hideModal()">&times;</span>
               <h2>로그인</h2>
-              <form method="post" id="login">
+              <form>
                 <label for="username">&nbsp;&nbsp;&nbsp;아이디 : </label>
-                <input type="text" id="username" name="login_id" required><br><br>
+                <input type="text" id="username" name="username" required><br><br>
                 <label for="password">비밀번호 : </label>
-                <input type="password" id="password" name="login_password" required><br><br>
-                <button type="submit" id="login-Btn">로그인</button>
-                <button id="kakao-login-btn" >카카오톡으로 로그인</button>
+                <input type="password" id="password" name="password" required><br><br>
               </form>
-                <div id="login-form" style="display: none;">
-                  <h2>로그인</h2>
-                </div>
+              <button type="submit">로그인</button>
+                <button id="kakao_login">카카오톡으로 로그인하기</button>
+                <img src="../img/카카오톡_로고_360.png" id="kakaologo">
             </div>
           </div>
+          <li><button onclick="join()">회원가입</button></li>
         </ul>
       </header>
-      <form><div id="profile_wrap">
-      </form>
     </div>
-    <div id="cardLists">test</div>
+      <div id="profile_wrap">
+        <form action="/api/posts" method="post" enctype="multipart/form-data">
+        <div class="profile_box1">
+            <input type="file" id="image" name="image"/>
+          <div class="right">
+            아이디 : <h1>cutyMinji</h1>
+            <input type="text" id="inputNickname" name="title" placeholder="변경할 닉네임을 입력해주세요." required>
+           </div>
+        </div>
+          <textarea placeholder="코멘트를 입력해주세요." class="commenttext"></textarea>
+    </form>
+      </div>
+      <button type="submit" class="commentBtn">확인</button>
 
     <script src=../js/time.js defer></script>
     <script src="../js/search.js" defer></script>
     <script src="../js/home.js" defer></script>
-    <script src="../js/post.js" defer></script>
-    <script src="../js/login.js" defer></script>
-    <script src="../js/mypage.js" defer></script>
     <script src="../js/allBtnLoad.js" defer></script>
-    <!-- <script src="../js/mypageBtn.js" defer></script> -->
+    <script src="../js/post.js" defer></script>
+    <script src="../js/mypageBtn.js" defer></script>
+    <script src="../js/login.js" defer></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </body>
-</html>
+</html> -->

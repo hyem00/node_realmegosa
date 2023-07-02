@@ -1,6 +1,26 @@
-function update() {
+// 수정완료버튼을 눌렀을때
+async function update() {
   const urlParams = new URLSearchParams(window.location.search);
   const postId = urlParams.get("post_id");
+
+  // const content = document.querySelector("#content-input").value;
+  // const file = document.querySelector(".imageFile").files[0];
+  // const formData = new FormData();
+
+  // if (file) {
+  //   formData.append("image", file);
+  // }
+  // formData.append("content", content);
+
+  // await axios
+  //   .put(`/api/posts/${postId}`, formData)
+  //   .then((response) => {
+  //     alert("수정성공");
+  //   })
+  //   .catch((error) => {
+  //     alert(error);
+  //   });
+
   const form = document.getElementById("post-form");
 
   form.addEventListener("submit", async (e) => {
@@ -35,3 +55,4 @@ function update() {
       });
   });
 }
+update();

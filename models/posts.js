@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       pimage_url: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       nickname: {
         type: DataTypes.STRING,
