@@ -46,6 +46,14 @@ router.post("/users", async (req, res) => {
     if (!user) {
       res.status(401).json({ Message: "create false" });
     }
+    if (user) {
+      await Users_profiles.create({
+        user_id : user.user_id,
+        //image_url,
+        nickname : user.nickname,
+        //comment
+      })
+    }
 
     res.status(201).json({ message: "회원가입이 완료되었습니다." });
   } catch (error) {
@@ -91,22 +99,4 @@ router.get("/logout", (req, res) => {
   }
 });
 
-// 사용자 조회
-router.get("/users/:user_id", async (req, res) => {
-  const { user_id } = req.params;
-
-  // 사용자 테이블과 사용자 정보 테이블에 있는 데이터를 가지고 와야함.
-  const user = await Users.findOne({
-    attributes: ["user_id", "login_id"],
-    include: [
-      {
-        model: Users_profiles, // 1:1 관계를 맺고있는 UserInfos 테이블을 조회합니다.
-        attributes: ["user_id", "image_url", "nickname", "comment"],
-      },
-    ],
-    where: { user_id },
-  });
-
-  return res.status(200).json({ data: user });
-});
 module.exports = router;

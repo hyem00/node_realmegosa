@@ -1,11 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const { Users_profiles } = require("../models");
+const { Users } = require("../models");
 
-// GET /api/user_profile
-router.get("/", async (req, res) => {
+// GET /api/user_profile 사용자 조회
+router.get("/users/:user_id", async (req, res) => {
   try {
-    const profiles = await Users_profiles.findAll();
+    const { user_id } = req.params;
+
+  // 사용자 테이블과 사용자 정보 테이블에 있는 데이터를 가지고 와야함.
+  const user = await Users_profiles.findOne({
+    attributes: ["user_id", "login_id"],
+    include: [
+      {
+        model: Users_profiles, // 1:1 관계를 맺고있는 UserInfos 테이블을 조회합니다.
+        attributes: [ "image_url", "nickname", "comment"],
+      },
+    ],
+    where: { user_id },
+  });
     res.json(profiles);
   } catch (error) {
     console.error(error);
