@@ -21,7 +21,6 @@ function detailpost() {
       let title = rows["title"];
       let content = rows["content"];
       let category = rows["category"];
-      let foodtype = rows["foodtype"];
       let createdAt = rows["createdAt"];
       let nickname = rows["nickname"];
 

@@ -60,21 +60,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function logincheck() {
-  const checkToken = document.cookie.split('=')[1];
-  const topBar = document.querySelector('.signBox');
-  console.log(checkToken);
-  let temp = ``;
-  if (checkToken) {
-    temp = `<li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
-            <button onclick="mypage()">마이페이지</button>
-            <button onclick="logout()">로그아웃</button>
-          `;
-  } else {
-    temp = `<button onclick="join()">회원가입</button>
-            <button onclick="showModal()">로그인</button>
-          `;
-  }
-  topBar.innerHTML += temp;
+  console.log("test")
+  // const checkToken = document.cookie.split('=')[1];
+  // const topBar = document.querySelector('.signBox');
+  // console.log(checkToken);
+  // let temp = ``;
+  // if (checkToken) {
+  //   temp = `<li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
+  //           <button onclick="mypage()">마이페이지</button>
+  //           <button onclick="logout()">로그아웃</button>
+  //         `;
+  // } else {
+  //   temp = `<button onclick="join()">회원가입</button>
+  //           <button onclick="showModal()">로그인</button>
+  //         `;
+  // }
+  // topBar.innerHTML += temp;
 }
 
 function mypage() {
