@@ -6,8 +6,8 @@ const path = require("path");
 const s3Client = new S3Client({
   region: "ap-northeast-2",
   credentials: {
-    accessKeyId: "AKIAXJNFEH3MM6OODC7K",
-    secretAccessKey: "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",
+    accessKeyId: "",
+    secretAccessKey: "",
   },
 });
 

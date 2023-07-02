@@ -22,6 +22,7 @@ header {
 
 header > h2 {
   margin-left: 20px;
+  cursor: pointer;
 }
 
 header ul {
@@ -48,8 +49,8 @@ header ul li {
 }
 
 header ul li img {
-  width: 30px !important;
-  height: 30px !important;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 
@@ -167,17 +168,11 @@ button {
 .login_modal.show {
   display: block;
 }
-#kakao_login {
+#kakao-login-btn {
   background-color: #f7e600;
   border: none;
   color: #000;
   margin-left: 8px;
-}
-
-#kakaologo {
-  width: 35px;
-  height: 35px;
-  margin-left: 30px;
 }
 
 /* 로그인 회원가입 로그아웃 마이페이지 요소 위치 조정 */
@@ -199,4 +194,12 @@ button {
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+
+#login {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>이쁜홈</title>
     <link rel="stylesheet" type="text/css" href="../css/post.css" />
+    <link rel="stylesheet" type="text/css" href="../css/home.css" />
   </head>
   <body>
     <div class="intro">
@@ -14,8 +15,8 @@
           <li id="date"></li>
           <li id="day"></li>
           <li id="time"></li>
-          <!-- <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li>
-          <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li> -->
+          <!-- <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li> -->
+          <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
           <div id="searchModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>
@@ -25,13 +26,31 @@
               </form>
             </div>
           </div>
-          <li><button>로그인</button></li>
-          <li><button onclick="join()">회원가입</button></li>
+          <div class="signBox"></div>
+          <div id="login_modal" class="login_modal">
+            <div class="login_modal-content">
+              <span class="login_close" onclick="hideModal()">&times;</span>
+              <h2>로그인</h2>
+              <form method="post" id="login">
+                <label for="username">&nbsp;&nbsp;&nbsp;아이디 : </label>
+                <input type="text" id="username" name="login_id" required><br><br>
+                <label for="password">비밀번호 : </label>
+                <input type="password" id="password" name="login_password" required><br><br>
+                <button type="submit" id="login-Btn">로그인</button>
+                <button id="kakao-login-btn" >카카오톡으로 로그인</button>
+              </form>
+                
+                <div id="login-form" style="display: none;">
+                  <h2>로그인</h2>
+                </div>
+            </div>
+          </div>
         </ul>
       </header>
     </div>  
+
     <div id="board">
-      <form action="/api/posts" method="post" enctype="multipart/form-data">
+      <form action="/api/posts" id="load" method="post" accept="image/* enctype="multipart/form-data">
       <!-- <form id="post-form"> -->
         <input type="text" id="title-input" name="title" placeholder="제목을 입력해주세요." required>
         <select id ="category" name="category"> 
@@ -39,7 +58,9 @@
           <option value="homecook">홈레시피</option> 
           <option value="matjib">맛집추천</option> 
         </select>
-        <input type="file" id="image" name="image">
+        <label for="image">이미지를 넣어주세요.</label>
+<input type="file" id="image" name="image">
+
         <textarea id="content-input" name="content" placeholder="당신의 음식이야기를 들려주세요." required></textarea>
         <div class="postBtn">
           <button type="submit" id="submitBtn">게시글작성</button>
