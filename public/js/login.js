@@ -87,8 +87,8 @@ function updateButton() {
     image.onclick = post;
     link.appendChild(image);
     listItem.appendChild(link);
-    listItem.id = "image-li"; // 이미지 요소를 식별하기 위한 ID 추가
-    topBar.appendChild(listItem);
+    listItem.id = "image-li";
+    topBar.insertBefore(listItem, topBar.firstChild);
   } else {
     const joinButton = document.createElement("button");
     joinButton.innerHTML = "회원가입";

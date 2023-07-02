@@ -8,6 +8,11 @@ body {
   background: #f7f8fc;
 } */
 
+header > h2 {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
 #canvas {
   transition: 2s;
 }
@@ -32,10 +37,11 @@ body {
 #rolletBox {
   width: 380px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
+  margin: auto;
+  display: block;
   flex-direction: column;
   position: relative;
+  margin-top: 80px;
 }
 
 #rolletBox::before {
@@ -49,4 +55,9 @@ body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 22;
+}
+
+#cardLists {
+  margin: auto;
+  display: block;
 }
