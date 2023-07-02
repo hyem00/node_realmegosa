@@ -117,4 +117,5 @@ router.get("/users/:user_id", async (req, res) => {
 
   return res.status(200).json({ data: user });
 });
+
 module.exports = router;

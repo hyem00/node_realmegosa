@@ -2,33 +2,57 @@ const express = require("express");
 const router = express.Router();
 const { Users_profiles } = require("../models");
 const { Users } = require("../models");
+const { Posts } = require("../models");
 const upload = require("../middlewares/upload-middleware");
-// GET /api/user_profile 사용자 조회
-router.get("/users/:user_id", async (req, res) => {
-  try {
-    const { user_id } = req.params;
+const authMiddleware = require("../middlewares/auth-middleware");
+
+// 사용자 조회
+router.get("/myuser", authMiddleware, async (req, res) => {
+  const { user_id } = res.locals.user;
 
     // 사용자 테이블과 사용자 정보 테이블에 있는 데이터를 가지고 와야함.
-    const user = await Users_profiles.findOne({
-      attributes: ["user_id", "login_id"],
-      include: [
-        {
-          model: Users_profiles, // 1:1 관계를 맺고있는 UserInfos 테이블을 조회합니다.
-          attributes: ["image_url", "nickname", "comment"],
-        },
-      ],
-      where: { user_id },
+  const user = await Users_profiles.findOne({
+    where: { user_id }
+  });
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      errorMessage: "해당 유저가 없습니다.",
     });
-    res.json(profiles);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "서버 오류" });
   }
-});
+  return res.status(200).json(user);
+})
 
-// router.post("/users", upload.single("image"), async (req, res) => {
-//   const imageUrl = req.file.location;
-// });
+// 내가 쓴 게시글 조회
+router.get("/posts/myuser", authMiddleware, async (req, res) => {
+  const { user_id } = res.locals.user;
+  const userPosts = await Posts.findAll({
+    include: [
+      {
+        model: Users,
+        attributes: ["nickname"]
+      }
+    ],
+    where: { user_id: user_id },
+    attributes: [
+      "post_id",
+      "user_id",
+      "title",
+      "content",
+      "category",
+      "pimage_url",
+      "createdAt",
+      "updatedAt"
+    ],
+    order: [["updatedAt", "ASC"]],
+  });
+  if (!userPosts.length) {
+    return res.status(404).json({
+      errorMessage: "작성된 게시글이 없습니다.",
+    });
+  }
+  return res.status(200).json(userPosts);
+});
 
 // POST /api/user_profile
 router.post("/user_profile", upload.single("image"), async (req, res) => {
