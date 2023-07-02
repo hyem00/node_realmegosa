@@ -55,13 +55,13 @@ function KakaoLogout() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   logincheck();
 });
 
 function logincheck() {
-  const checkToken = document.cookie.split('=')[1];
-  const topBar = document.querySelector('.signBox');
+  const checkToken = document.cookie.split("=")[1];
+  const topBar = document.querySelector(".signBox");
   console.log(checkToken);
   let temp = ``;
   if (checkToken) {
@@ -83,13 +83,13 @@ function mypage() {
 
 function logout() {
   fetch("http://localhost:8000/api/logout", {
-  method: "GET",
+    method: "GET",
   })
-  .then((res) => res.json())
-  .then((res) => {
-  console.log(res);
-  alert("로그아웃 되었습니다.");
-  localStorage.removeItem("token");
-  location.reload();
-  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      alert("로그아웃 되었습니다.");
+      localStorage.removeItem("token");
+      location.reload();
+    });
 }
