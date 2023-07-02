@@ -21,6 +21,7 @@ function detailpost() {
       let title = rows["title"];
       let content = rows["content"];
       let category = rows["category"];
+      let pimage_url = rews["pimage_url"];
       let createdAt = rows["createdAt"];
       let nickname = rows["nickname"];
 
@@ -30,6 +31,7 @@ function detailpost() {
                   </div>
                   <div class="board_view">
                    <div class="title">${title}</div>
+                   <img src="${pimage_url}"/>
                    <div class="info">
                      <dl>
                        <dt>카테고리</dt>
