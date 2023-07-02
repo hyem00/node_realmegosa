@@ -32,9 +32,8 @@ router.get("/posts", async (req, res) => {
 });
 
 // 게시글 상세 조회
-router.get("/posts/:post_id", upload.single("image"), async (req, res) => {
+router.get("/posts/:post_id", upload.single("image"),async (req, res) => {
   const { post_id } = req.params;
-  // const imageUrl = req.file.location;
   const post = await Posts.findOne({
     include: [
       {
@@ -55,28 +54,24 @@ router.get("/posts/:post_id", upload.single("image"), async (req, res) => {
 });
 
 // 게시글 작성
-router.post(
-  "/posts",
-  authMiddleware,
-  upload.single("image"),
-  async (req, res) => {
-    const { user_id } = res.locals.user;
-    const imageUrl = req.file.location;
-    const user = await Users.findOne({ where: { user_id: user_id } });
-    const { title, content, category, foodtype } = req.body;
+router.post("/posts", authMiddleware, async (req, res) => {
+  const { user_id } = res.locals.user;
+  const imageUrl = req.file.location;
+  const user = await Users.findOne({ where: { user_id: user_id } });
 
-    const post = await Posts.create({
-      user_id: user.user_id,
-      title,
-      content,
-      category,
-      pimage_url: imageUrl,
-      nickname: user.nickname,
-    });
+  const { title, content, category } = req.body;
 
-    return res.status(201).json(post);
-  }
-);
+  const post = await Posts.create({
+    user_id: user.user_id,
+    title,
+    content,
+    pimage_url:imageUrl,
+    category,
+    nickname: user.nickname,
+  });
+
+  return res.status(201).json(post);
+});
 
 // 게시글 수정
 router.put("/posts/:post_id", authMiddleware, async (req, res) => {
@@ -164,9 +159,15 @@ router.get("/post/:category", async (req, res) => {
 });
 
 // 내가 쓴 게시글 조회
-router.get("/posts/users/:user_id", async (req, res) => {
+router.get("/posts/:user_id", async (req, res) => {
   const { user_id } = req.params;
-  const user_idPost = await Posts.findAll({
+  const userPosts = await Posts.findAll({
+    include: [
+      {
+        model: Users,
+        attributes: ["nickname"]
+      }
+    ],
     where: { user_id: user_id },
     attributes: [
       "post_id",
@@ -176,21 +177,16 @@ router.get("/posts/users/:user_id", async (req, res) => {
       "category",
       "pimage_url",
       "createdAt",
-      "updatedAt",
+      "updatedAt"
     ],
-    order: [["createdAt", "DESC"]],
+    order: [["updatedAt", "ASC"]],
   });
-
-  if (!user_idPost.length) {
+  if (!userPosts.length) {
     return res.status(404).json({
       errorMessage: "작성된 게시글이 없습니다.",
     });
-  } else {
-    return res.status(200).json({
-      success: true,
-      posts: categorypost,
-    });
   }
+  return res.status(200).json(userPosts);
 });
 
 router.get("/:post_id", authMiddleware, async (req, res) => {
