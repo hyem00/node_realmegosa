@@ -40,6 +40,7 @@ document.getElementById("kakao-login-btn").addEventListener("click", () => {
           const kakao_account = res.kakao_account;
           console.log("카카오 로그인");
           hideModal();
+          location.reload();
         },
       });
     },

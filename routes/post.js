@@ -7,18 +7,8 @@ const authMiddleware = require("../middlewares/auth-middleware.js");
 
 // 최신 게시글 조회
 router.get("/posts", async (req, res) => {
+  console.log(req);
   const allPosts = await Posts.findAll({
-    attributes: [
-      "post_id",
-      "user_id",
-      "title",
-      "content",
-      "category",
-      "pimage_url",
-      "nickname",
-      "createdAt",
-      "updatedAt",
-    ],
     order: [["updatedAt", "ASC"]],
   });
 
@@ -26,9 +16,8 @@ router.get("/posts", async (req, res) => {
     return res.status(404).json({
       errorMessage: "작성된 게시글이 없습니다.",
     });
-  } else {
-    return res.status(200).json(allPosts);
   }
+  return res.status(200).json(allPosts);
 });
 
 // 게시글 상세 조회

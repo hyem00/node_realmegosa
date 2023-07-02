@@ -12,7 +12,6 @@ function categorytype() {
     .then((data) => {
       let rows = data;
       $("#cardLists").empty();
-
       const result = rows.filter((x) => x.category === category);
       for (let i = result.length - 1; i >= 0; i--) {
         let post_id = result[i]["post_id"];

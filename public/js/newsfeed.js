@@ -1,6 +1,6 @@
 function newsfeed() {
   const config = {
-    method: "get",
+    method: "GET",
   };
   fetch("http://localhost:8000/api/posts", config)
     .then((response) => response.json())
@@ -35,3 +35,5 @@ function newsfeed() {
       }
     });
 }
+
+newsfeed();

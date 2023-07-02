@@ -4,7 +4,7 @@ function datailpostBtn(post_id) {
 }
 
 // update.html 열리는 버튼
-function postUpdateBtn(post_id) {
+function postUpdate(post_id) {
   location.href = `http://localhost:8000/posts/update/?post_id=${post_id}`;
 }
 
