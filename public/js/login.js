@@ -60,7 +60,6 @@ function updateButton() {
   const topBar = document.querySelector(".signBox");
   const existingButtons = document.querySelectorAll(".dynamic-button");
 
-  // 기존 버튼 제거
   existingButtons.forEach((button) => {
     button.remove();
   });
@@ -98,9 +97,7 @@ function mypage() {
 
 function logout() {
   fetch("http://localhost:8000/api/logout", {
-
     method: "GET",
-
   })
     .then((res) => res.json())
     .then((res) => {

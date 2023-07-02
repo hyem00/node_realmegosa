@@ -3,12 +3,14 @@ const cookieParser = require("cookie-parser");
 const usersRouter = require("./routes/user.js");
 const postRouter = require("./routes/post.js");
 const cors = require("cors");
+// const morgan = require("morgan");
 const app = express();
 const PORT = 8000;
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+// app.use(morgan("dev"));
 app.use("/api", [usersRouter, postRouter]);
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
