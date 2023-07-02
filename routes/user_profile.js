@@ -69,6 +69,25 @@ router.put("/myuser", authMiddleware, async (req, res) => {
     },
     { where: { user_id: user_id } }
   );
+
+// 유저,유저프로필 수정
+router.put("/myuser", authMiddleware, async (req, res) => {
+  console.log(req)
+  const { user_id } = res.locals.user
+  const { nickname, comment } = req.body;
+  
+  await Users_profiles.update(
+    {
+      nickname,
+      comment
+    }
+   ,{ where: { user_id: user_id } });
+  await Users.update(
+    {
+      nickname,
+      comment
+    }
+   ,{ where: { user_id: user_id } });
   return res.status(200).json({
     success: true,
     message: "나의 정보가 수정되었습니다.",

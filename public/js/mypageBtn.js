@@ -31,4 +31,5 @@ function mypagePost() {
       $("#profile_wrap").append(temp_html);
     });
 }
+
 mypagePost();

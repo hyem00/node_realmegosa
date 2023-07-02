@@ -40,7 +40,7 @@ app.get("/posts", (req, res) => {
   res.sendFile(__dirname + "/public/templates/detailpost.html");
 });
 
-// 수정 페이지
+// 게시글 수정 페이지
 app.get("/posts/update", (req, res) => {
   res.sendFile(__dirname + "/public/templates/update.html");
 });
@@ -59,6 +59,7 @@ app.get("/myuser/test", (req, res) => {
 app.get("/category", (req, res) => {
   res.sendFile(__dirname + "/public/templates/category.html");
 });
+
 app.listen(PORT, () => {
   console.log(PORT, "포트 번호로 서버가 실행되었습니다.");
 });

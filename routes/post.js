@@ -3,6 +3,7 @@ const router = express.Router();
 const { Users, Posts } = require("../models");
 const upload = require("../middlewares/upload-middleware");
 const authMiddleware = require("../middlewares/auth-middleware.js");
+// 전체 게시글 조회
 router.get("/posts", async (req, res) => {
   const allPosts = await Posts.findAll({
     attributes: [
@@ -24,6 +25,7 @@ router.get("/posts", async (req, res) => {
     });
   } else {
     return res.status(200).json({ message: "성공하였습니다." });
+
   }
 });
 // 게시글 상세 조회
@@ -161,4 +163,5 @@ router.get("/:post_id", authMiddleware, async (req, res) => {
     });
   }
 });
+
 module.exports = router;

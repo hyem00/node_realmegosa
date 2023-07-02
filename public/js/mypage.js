@@ -43,6 +43,7 @@ function mypage() {
         let createdAt = rows[i]["createdAt"];
         let a = createdAt.substring(0, 10);
         let nickname = rows[i]["nickname"];
+
         let temp_html = `
       <div id="box" onclick="datailpostBtn(${post_id})">
           <img id="img" src="${pimage_url}" alt="나중에 이미지">
@@ -56,4 +57,6 @@ function mypage() {
       }
     });
 }
+
 mypage();
+
