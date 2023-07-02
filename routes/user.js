@@ -46,6 +46,14 @@ router.post("/users", async (req, res) => {
     if (!user) {
       res.status(401).json({ Message: "create false" });
     }
+    if (user) {
+      await Users_profiles.create({
+        user_id : user.user_id,
+        //image_url,
+        nickname : user.nickname,
+        //comment
+      })
+    }
 
     res.status(201).json({ message: "회원가입이 완료되었습니다." });
   } catch (error) {
@@ -109,5 +117,4 @@ router.get("/users/:user_id", async (req, res) => {
 
   return res.status(200).json({ data: user });
 });
-
 module.exports = router;
