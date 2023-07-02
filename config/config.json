@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "remi1738",
-    "database": "real_megosa",
-    "host": "megosa.cuulxkviuwfg.ap-northeast-2.rds.amazonaws.com",
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
     "dialect": "mysql"
   },
   "test": {
