@@ -68,14 +68,14 @@ loginForm.addEventListener("submit", async (e) => {
           // 로그아웃 처리
           fetch("http://localhost:8000/api/logout", {
             method: "GET",
-            })
+          })
             .then((res) => res.json())
             .then((res) => {
-            console.log(res);
-            alert("로그아웃 되었습니다.");
-            localStorage.removeItem("token");
-	          location.reload();
-            })
+              console.log(res);
+              alert("로그아웃 되었습니다.");
+              localStorage.removeItem("token");
+              location.reload();
+            });
         }
       }
 
