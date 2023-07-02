@@ -38,7 +38,7 @@ function detailview(post_id) {
                </dl>
                <dl>
                  <dt>닉네임</dt>
-                 <dd>${nickname}</dd>
+                 <dd></dd>
                </dl>
                <dl>
                  <dt>작성일</dt>
