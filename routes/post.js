@@ -24,7 +24,12 @@ router.get("/posts", async (req, res) => {
       errorMessage: "작성된 게시글이 없습니다.",
     });
   } else {
+
     return res.status(200).json(allPosts);
+
+    return res.status(200).json({ message: "성공하였습니다." });
+
+
   }
 });
 // 게시글 상세 조회
@@ -162,4 +167,5 @@ router.get("/:post_id", authMiddleware, async (req, res) => {
     });
   }
 });
+
 module.exports = router;

@@ -50,6 +50,30 @@ router.get("/posts/myuser", authMiddleware, async (req, res) => {
   }
   return res.status(200).json(userPosts);
 });
+
+
+//마이프로필 수정 작성
+router.put("/myuser", authMiddleware, async (req, res) => {
+  console.log(req);
+  const { user_id } = res.locals.user;
+  const { nickname, comment } = req.body;
+  await Users_profiles.update(
+    {
+      nickname,
+      comment,
+    },
+    { where: { user_id: user_id } }
+  );
+  await Users.update(
+    {
+      nickname,
+      comment,
+    },
+    { where: { user_id: user_id } }
+  );
+
+// 유저,유저프로필 수정
+
 router.put("/myuser", authMiddleware, async (req, res) => {
   console.log(req);
   const { user_id } = res.locals.user;

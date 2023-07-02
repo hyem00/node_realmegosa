@@ -1,4 +1,5 @@
 function test() {
+
   const mynickname = document.querySelector("#nicknamedy").value;
   const commenttext = document.querySelector("#commenttext").value;
   console.log(mynickname);
@@ -11,6 +12,8 @@ function test() {
     },
     body: JSON.stringify({ nickname: mynickname, comment: commenttext }),
   })
+
+
     .then((res) => res.json())
     .then((res) => {
       console.log(res);
@@ -22,3 +25,4 @@ function test() {
       }
     });
 }
+
