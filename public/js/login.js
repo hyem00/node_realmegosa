@@ -25,6 +25,7 @@ loginForm.addEventListener("submit", (e) => {
       }
     });
 });
+
 Kakao.init("683d473caa873ed84400194b1b27aab0");
 document.getElementById("kakao-login-btn").addEventListener("click", () => {
   // 카카오 로그인 실행
@@ -72,11 +73,25 @@ function updateButton() {
     myPageButton.className = "dynamic-button";
     myPageButton.addEventListener("click", mypage);
     topBar.appendChild(myPageButton);
+
     const logoutButton = document.createElement("button");
     logoutButton.innerHTML = "로그아웃";
     logoutButton.className = "dynamic-button";
-    logoutButton.addEventListener("click", logout);
+    logoutButton.addEventListener("click", () => {
+      logout();
+      removeImageElement();
+    });
     topBar.appendChild(logoutButton);
+
+    const listItem = document.createElement("li");
+    const link = document.createElement("a");
+    const image = document.createElement("img");
+    image.src = "../img/pngwing.com.png";
+    image.onclick = post;
+    link.appendChild(image);
+    listItem.appendChild(link);
+    listItem.id = "image-li";
+    topBar.insertBefore(listItem, topBar.firstChild);
   } else {
     const joinButton = document.createElement("button");
     joinButton.innerHTML = "회원가입";
@@ -89,11 +104,20 @@ function updateButton() {
     loginButton.className = "dynamic-button";
     loginButton.addEventListener("click", showModal);
     topBar.appendChild(loginButton);
+
+    removeImageElement(); // 이미지 요소 제거
+  }
+
+  function removeImageElement() {
+    const imageLi = document.getElementById("image-li");
+    if (imageLi) {
+      imageLi.remove();
+    }
   }
 }
 
 function mypage() {
-  location.href = "mypage";
+  location.href = `http://localhost:8000/myuser`;
 }
 
 function logout() {

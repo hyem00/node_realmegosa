@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>이쁜홈</title>
+    <link rel="stylesheet" type="text/css" href="../css/home.css" />
     <link rel="stylesheet" type="text/css" href="/css/post.css" />
     <link rel="stylesheet" type="text/css" href="/css/detailpost.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -16,11 +17,9 @@
           <li id="date"></li>
           <li id="day"></li>
           <li id="time"></li>
+          <!-- <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li> -->
           <li>
-            <a href="#"><img src="/img/pngwing.com.png" onclick="post()" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="/img/pngegg.png" id="openModalBtn" /></a>
+            <a href="#"><img src="../img/pngegg.png" id="openModalBtn" /></a>
           </li>
           <div id="searchModal" class="modal">
             <div class="modal-content">
@@ -35,8 +34,35 @@
               </form>
             </div>
           </div>
-          <li><button>로그인</button></li>
-          <li><button onclick="join()">회원가입</button></li>
+          <div class="signBox"></div>
+          <div id="login_modal" class="login_modal">
+            <div class="login_modal-content">
+              <span class="login_close" onclick="hideModal()">&times;</span>
+              <h2>로그인</h2>
+              <form method="post" id="login">
+                <label for="username">&nbsp;&nbsp;&nbsp;아이디 : </label>
+                <input
+                  type="text"
+                  id="username"
+                  name="login_id"
+                  required
+                /><br /><br />
+                <label for="password">비밀번호 : </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="login_password"
+                  required
+                /><br /><br />
+                <button type="submit" id="login-Btn">로그인</button>
+                <button id="kakao-login-btn">카카오톡으로 로그인</button>
+              </form>
+
+              <div id="login-form" style="display: none">
+                <h2>로그인</h2>
+              </div>
+            </div>
+          </div>
         </ul>
       </header>
 
@@ -49,5 +75,7 @@
     <script src="/js/postUpdate.js" defer></script>
     <script src="/js/update.js" defer></script>
     <script src="/js/delete.js" defer></script>
+    <script src="../js/login.js" defer></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </body>
 </html>

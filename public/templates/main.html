@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>최신글</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/home.css" />
     <link rel="stylesheet" type="text/css" href="../css/post.css" />
     <link rel="stylesheet" type="text/css" href="../css/rollet.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -19,6 +20,7 @@
           <li id="date"></li>
           <li id="day"></li>
           <li id="time"></li>
+          <!-- <li><a href="#"><img src="../img/pngwing.com.png" onclick="post()"></a></li> -->
           <li><a href="#"><img src="../img/pngegg.png" id="openModalBtn"></a></li>
           <div id="searchModal" class="modal">
             <div class="modal-content">
@@ -40,8 +42,9 @@
                 <label for="password">비밀번호 : </label>
                 <input type="password" id="password" name="login_password" required><br><br>
                 <button type="submit" id="login-Btn">로그인</button>
+                <button id="kakao-login-btn" >카카오톡으로 로그인</button>
               </form>
-                <button id="kakao-login-btn" >카카오톡으로 로그인하기</button>
+                
                 <div id="login-form" style="display: none;">
                   <h2>로그인</h2>
                 </div>

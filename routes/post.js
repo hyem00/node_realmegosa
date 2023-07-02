@@ -21,9 +21,8 @@ router.get("/posts", async (req, res) => {
 });
 
 // 게시글 상세 조회
-router.get("/posts/:post_id", upload.single("image"), async (req, res) => {
+router.get("/posts/:post_id", upload.single("image"),async (req, res) => {
   const { post_id } = req.params;
-  // const imageUrl = req.file.location;
   const post = await Posts.findOne({
     include: [
       {
@@ -44,28 +43,24 @@ router.get("/posts/:post_id", upload.single("image"), async (req, res) => {
 });
 
 // 게시글 작성
-router.post(
-  "/posts",
-  authMiddleware,
-  upload.single("image"),
-  async (req, res) => {
-    const { user_id } = res.locals.user;
-    const imageUrl = req.file.location;
-    const user = await Users.findOne({ where: { user_id: user_id } });
-    const { title, content, category, foodtype } = req.body;
+router.post("/posts", authMiddleware, async (req, res) => {
+  const { user_id } = res.locals.user;
+  const imageUrl = req.file.location;
+  const user = await Users.findOne({ where: { user_id: user_id } });
 
-    const post = await Posts.create({
-      user_id: user.user_id,
-      title,
-      content,
-      category,
-      pimage_url: imageUrl,
-      nickname: user.nickname,
-    });
+  const { title, content, category } = req.body;
 
-    return res.status(201).json(post);
-  }
-);
+  const post = await Posts.create({
+    user_id: user.user_id,
+    title,
+    content,
+    pimage_url:imageUrl,
+    category,
+    nickname: user.nickname,
+  });
+
+  return res.status(201).json(post);
+});
 
 // 게시글 수정
 router.put("/posts/:post_id", authMiddleware, async (req, res) => {
@@ -148,36 +143,6 @@ router.get("/post/:category", async (req, res) => {
     return res.status(200).json({
       success: true,
       posts: categoryPost,
-    });
-  }
-});
-
-// 내가 쓴 게시글 조회
-router.get("/posts/users/:user_id", async (req, res) => {
-  const { user_id } = req.params;
-  const user_idPost = await Posts.findAll({
-    where: { user_id: user_id },
-    attributes: [
-      "post_id",
-      "user_id",
-      "title",
-      "content",
-      "category",
-      "pimage_url",
-      "createdAt",
-      "updatedAt",
-    ],
-    order: [["createdAt", "DESC"]],
-  });
-
-  if (!user_idPost.length) {
-    return res.status(404).json({
-      errorMessage: "작성된 게시글이 없습니다.",
-    });
-  } else {
-    return res.status(200).json({
-      success: true,
-      posts: categorypost,
     });
   }
 });

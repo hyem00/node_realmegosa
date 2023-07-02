@@ -1,6 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
-
+config.json
 ### Node ###
 # Logs
 logs
@@ -45,6 +45,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+config/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
