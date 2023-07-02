@@ -71,12 +71,25 @@ function updateButton() {
     myPageButton.className = "dynamic-button";
     myPageButton.addEventListener("click", mypage);
     topBar.appendChild(myPageButton);
+
     const logoutButton = document.createElement("button");
     logoutButton.innerHTML = "로그아웃";
     logoutButton.className = "dynamic-button";
-    logoutButton.addEventListener("click", logout);
+    logoutButton.addEventListener("click", () => {
+      logout();
+      removeImageElement();
+    });
     topBar.appendChild(logoutButton);
 
+    const listItem = document.createElement("li");
+    const link = document.createElement("a");
+    const image = document.createElement("img");
+    image.src = "../img/pngwing.com.png";
+    image.onclick = post;
+    link.appendChild(image);
+    listItem.appendChild(link);
+    listItem.id = "image-li"; // 이미지 요소를 식별하기 위한 ID 추가
+    topBar.appendChild(listItem);
   } else {
     const joinButton = document.createElement("button");
     joinButton.innerHTML = "회원가입";
@@ -89,6 +102,15 @@ function updateButton() {
     loginButton.className = "dynamic-button";
     loginButton.addEventListener("click", showModal);
     topBar.appendChild(loginButton);
+
+    removeImageElement(); // 이미지 요소 제거
+  }
+
+  function removeImageElement() {
+    const imageLi = document.getElementById("image-li");
+    if (imageLi) {
+      imageLi.remove();
+    }
   }
 }
 
