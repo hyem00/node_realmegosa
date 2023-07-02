@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-
 const { Users, Posts } = require("../models");
 const upload = require("../middlewares/upload-middleware");
 const authMiddleware = require("../middlewares/auth-middleware.js");
-
-// 최신 게시글 조회
 router.get("/posts", async (req, res) => {
   const allPosts = await Posts.findAll({
     attributes: [
@@ -21,18 +18,16 @@ router.get("/posts", async (req, res) => {
     ],
     order: [["updatedAt", "ASC"]],
   });
-
   if (!allPosts.length) {
     return res.status(404).json({
       errorMessage: "작성된 게시글이 없습니다.",
     });
   } else {
-    return res.status(200).json(allPosts);
+    return res.status(200).json({ message: "성공하였습니다." });
   }
 });
-
 // 게시글 상세 조회
-router.get("/posts/:post_id", upload.single("image"), async (req, res) => {
+router.get("/posts/:post_id", async (req, res) => {
   const { post_id } = req.params;
   const post = await Posts.findOne({
     include: [
@@ -43,16 +38,13 @@ router.get("/posts/:post_id", upload.single("image"), async (req, res) => {
     ],
     where: { post_id: post_id },
   });
-
   if (!post) {
     return res.status(404).json({
       errorMessage: "해당 게시글을 찾을 수 없습니다..",
     });
   }
-
   return res.status(200).json(post);
 });
-
 // 게시글 작성
 router.post(
   "/posts",
@@ -63,20 +55,17 @@ router.post(
     const imageUrl = req.file.location;
     const user = await Users.findOne({ where: { user_id: user_id } });
     const { title, content, category } = req.body;
-
     const post = await Posts.create({
       user_id: user.user_id,
       title,
       content,
       category,
-      pimage_url: imageUrl,
       nickname: user.nickname,
+      pimage_url: imageUrl,
     });
-
     return res.status(201).json(post);
   }
 );
-
 // 게시글 수정
 router.put("/posts/:post_id", authMiddleware, async (req, res) => {
   const { post_id } = req.params;
@@ -84,7 +73,6 @@ router.put("/posts/:post_id", authMiddleware, async (req, res) => {
   const { title, content } = req.body;
   console.log();
   const post = await Posts.findOne({ where: { post_id: post_id } });
-
   if (!post) {
     return res.status(404).json({
       success: false,
@@ -110,14 +98,11 @@ router.put("/posts/:post_id", authMiddleware, async (req, res) => {
     message: "해당 게시글이 수정되었습니다.",
   });
 });
-
 // 게시글 삭제
 router.delete("/posts/:post_id", authMiddleware, async (req, res) => {
   const { post_id } = req.params;
   const { user_id } = res.locals.user;
-
   const post = await Posts.findOne({ where: { post_id: post_id } });
-
   if (!post) {
     return res.status(404).json({
       success: false,
@@ -132,7 +117,6 @@ router.delete("/posts/:post_id", authMiddleware, async (req, res) => {
     message: "해당 게시글이 삭제되었습니다.",
   });
 });
-
 // 룰렛 게시글 조회
 router.get("/post/:category", async (req, res) => {
   const { category } = req.params;
@@ -149,7 +133,6 @@ router.get("/post/:category", async (req, res) => {
     ],
     order: [["updatedAt", "ASC"]],
   });
-
   if (!categoryPost.length) {
     return res.status(404).json({
       errorMessage: "작성된 게시글이 없습니다.",
@@ -161,12 +144,10 @@ router.get("/post/:category", async (req, res) => {
     });
   }
 });
-
 router.get("/:post_id", authMiddleware, async (req, res) => {
   const { user_id } = res.locals.user;
   const { post_id } = req.params;
   const post = await Posts.findOne({ where: { post_id: post_id } });
-
   if (post.user_id !== user_id) {
     return res.status(404).json({
       success: false,
@@ -180,5 +161,4 @@ router.get("/:post_id", authMiddleware, async (req, res) => {
     });
   }
 });
-
 module.exports = router;

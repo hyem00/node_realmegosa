@@ -1,15 +1,34 @@
-const btn = document.querySelector("#open_close");
-const box2 = document.querySelector(".profile_box2");
-btn.addEventListener("click", () => {
-  box2.classList.toggle("profile_box2_active");
-});
-
-const correctionBtn = document.getElementById("correction");
-const nicknameElement = document.querySelector(".right p");
-
-correctionBtn.addEventListener("click", () => {
-  const newNickname = prompt("새로운 닉네임을 입력하세요.");
-  if (newNickname) {
-    nicknameElement.textContent = newNickname;
-  }
-});
+function mypagePost() {
+  fetch("http://localhost:8000/apis/myuser", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      let rows = data;
+      $("#profile_wrap").empty();
+      let nickname = rows.nickname;
+      let comment = rows.comment;
+      let image_url = rows.image_url;
+      let temp_html = `
+        <div class="profile_box1">
+            <div class="right">
+              <div class="loginId">아이디
+                <div>${nickname}</div>
+              </div >
+              <div class="mynickname">닉네임
+                <input name="nickname" id = "nicknamedy" value="${nickname}">
+              </div>
+            </div>
+        </div>
+        <textarea placeholder="소개글을 작성해주세요." class="commenttext" id="commenttext">${comment}</textarea>
+        <button type="submit" id="myupdateBtn" onclick="test()">수정 완료</button>
+        `;
+      $("#profile_wrap").append(temp_html);
+    });
+}
+mypagePost();

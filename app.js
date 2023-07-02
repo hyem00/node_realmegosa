@@ -50,16 +50,15 @@ app.get("/myuser", (req, res) => {
   res.sendFile(__dirname + "/public/templates/mypage.html");
 });
 
+// 마이페이지 수정 페이지
+app.get("/myuser/test", (req, res) => {
+  res.sendFile(__dirname + "/public/templates/mypagePost.html");
+});
+
 // 홈쿡 카테고리 조회
 app.get("/category", (req, res) => {
   res.sendFile(__dirname + "/public/templates/category.html");
 });
-
-// 맛집 카테고리 조회
-// app.get("/category/matjib", (req, res) => {
-//   res.sendFile(__dirname + "/public/templates/category.html");
-// });
-
 app.listen(PORT, () => {
   console.log(PORT, "포트 번호로 서버가 실행되었습니다.");
 });
