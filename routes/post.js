@@ -194,6 +194,20 @@ router.get("/posts/users/:user_id", async (req, res) => {
   }
 });
 
+router.get("/:post_id", authMiddleware, async (req, res) => {
+  const { user_id } = res.locals.user;
+  const { post_id } = req.params;
+  console.log(req);
+  const post = await Posts.findOne({ where: { post_id: post_id } });
+
+  if (post.user_id !== user_id) {
+    return res.status(404).json({
+      success: false,
+      errorMessage: "해당 권한이 없습니다",
+    });
+  }
+});
+
 // // foodtype 게시글 조회
 // router.get("/post/:foodtype", async (req, res) => {
 //   const { foodtype } = req.params;
