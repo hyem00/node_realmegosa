@@ -14,7 +14,7 @@ router.get("/users/:user_id", async (req, res) => {
       include: [
         {
           model: Users_profiles, // 1:1 관계를 맺고있는 UserInfos 테이블을 조회합니다.
-          attributes: ["image_url", "nickname", "comment"],
+          attributes: ["pimage_url", "nickname", "comment"],
         },
       ],
       where: { user_id },
