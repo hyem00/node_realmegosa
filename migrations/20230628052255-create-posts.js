@@ -30,9 +30,8 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      foodtype: {
+      pimage_url: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       nickname: {
         type: Sequelize.STRING,

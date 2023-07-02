@@ -4,7 +4,7 @@ const router = express.Router();
 const { Users, Posts } = require("../models");
 
 const authMiddleware = require("../middlewares/auth-middleware.js");
-
+const upload = require("../middlewares/upload-middleware");
 // 최신 게시글 조회
 router.get("/posts", async (req, res) => {
   const allPosts = await Posts.findAll({
@@ -14,7 +14,6 @@ router.get("/posts", async (req, res) => {
       "title",
       "content",
       "category",
-      "foodtype",
       "nickname",
       "createdAt",
       "updatedAt",
@@ -56,23 +55,29 @@ router.get("/posts/:post_id", async (req, res) => {
 });
 
 // 게시글 작성
-router.post("/posts", authMiddleware, async (req, res) => {
-  const { user_id } = res.locals.user;
-  const user = await Users.findOne({ where: { user_id: user_id } });
+router.post(
+  "/posts",
+  authMiddleware,
+  upload.single("image"),
+  async (req, res) => {
+    const { user_id } = res.locals.user;
+    const imageUrl = req.file.location;
+    const user = await Users.findOne({ where: { user_id: user_id } });
 
-  const { title, content, category, foodtype } = req.body;
+    const { title, content, category } = req.body;
 
-  const post = await Posts.create({
-    user_id: user.user_id,
-    title,
-    content,
-    category,
-    foodtype,
-    nickname: user.nickname,
-  });
+    const post = await Posts.create({
+      user_id: user.user_id,
+      title,
+      content,
+      pimage_url: imageUrl,
+      category,
+      nickname: user.nickname,
+    });
 
-  return res.status(201).json(post);
-});
+    return res.status(201).json(post);
+  }
+);
 
 // 게시글 수정
 router.put("/posts/:post_id", authMiddleware, async (req, res) => {
@@ -143,7 +148,6 @@ router.get("/post/:category", async (req, res) => {
       "title",
       "content",
       "category",
-      "foodtype",
       //   "nickname",
       "createdAt",
       "updatedAt",
@@ -174,7 +178,6 @@ router.get("/posts/users/:user_id", async (req, res) => {
       "title",
       "content",
       "category",
-      "foodtype",
       //   "nickname",
       "createdAt",
       "updatedAt",
@@ -201,6 +204,12 @@ router.get("/:post_id", authMiddleware, async (req, res) => {
   const post = await Posts.findOne({ where: { post_id: post_id } });
 
   if (post.user_id !== user_id) {
+    return res.status(404).json({
+      success: false,
+      errorMessage: "해당 권한이 없습니다",
+    });
+  }
+  if (!user_id) {
     return res.status(404).json({
       success: false,
       errorMessage: "해당 권한이 없습니다",
