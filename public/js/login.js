@@ -1,10 +1,10 @@
 const loginForm = document.getElementById("login");
 
-loginForm.addEventListener("submit", async (e) => {
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const loginPayload = new FormData(loginForm);
   const mloginForm = {};
-  await loginPayload.forEach((value, key) => (mloginForm[key] = value));
+  loginPayload.forEach((value, key) => (mloginForm[key] = value));
 
   fetch("http://localhost:8000/api/login", {
     method: "POST",
