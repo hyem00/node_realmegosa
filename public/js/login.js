@@ -71,7 +71,6 @@ function updateButton() {
     myPageButton.className = "dynamic-button";
     myPageButton.addEventListener("click", mypage);
     topBar.appendChild(myPageButton);
-
     const logoutButton = document.createElement("button");
     logoutButton.innerHTML = "로그아웃";
     logoutButton.className = "dynamic-button";
