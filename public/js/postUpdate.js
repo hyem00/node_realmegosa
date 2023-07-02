@@ -39,3 +39,5 @@ function postUpdate() {
       $("#detailpost").append(temp_html);
     });
 }
+
+postUpdate();

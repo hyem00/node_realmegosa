@@ -20,7 +20,7 @@ function detailpost() {
       let user_id = rows["user_id"];
       let title = rows["title"];
       let content = rows["content"];
-      // let category = rows["category"];
+      let category = rows["category"];
       let foodtype = rows["foodtype"];
       let createdAt = rows["createdAt"];
       let nickname = rows["nickname"];
@@ -34,7 +34,7 @@ function detailpost() {
                    <div class="info">
                      <dl>
                        <dt>카테고리</dt>
-
+                       ${category}
                      </dl>
                      <dl>
                        <dt>닉네임</dt>
@@ -50,7 +50,7 @@ function detailpost() {
                    </div>
                  </div>
                  <div class="bt_wrap" id="bt_wrap">
-                  <button id="updateBtn" onclick="postUpdate()">수정</button>
+                  <button id="updateBtn" onclick="postUpdate(${post_id})">수정</button>
                   <button id="deleteBtn" onclick="deleteBtn(${post_id})">삭제</button>
                  </div>
                 `;
