@@ -11,6 +11,12 @@ router.get("/myuser", authMiddleware, async (req, res) => {
   // 사용자 테이블과 사용자 정보 테이블에 있는 데이터를 가지고 와야함.
   const user = await Users_profiles.findOne({
     where: { user_id },
+    include: [
+      {
+        model: Users,
+        attributes: ["login_id"],
+      },
+    ],
   });
   if (!user) {
     return res.status(404).json({

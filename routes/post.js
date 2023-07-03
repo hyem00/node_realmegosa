@@ -64,7 +64,7 @@ router.post(
       nickname: user.nickname,
       pimage_url: imageUrl,
     });
-    return res.status(201).json(post);
+    return res.redirect("/main");
   }
 );
 // 게시글 수정

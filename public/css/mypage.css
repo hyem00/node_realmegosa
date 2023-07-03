@@ -20,30 +20,30 @@ header > h2 {
 
 #profile_wrap {
   width: 360px;
-  background-color: #ece6cc;
+  background-color: antiquewhite;
   margin-top: 30px;
-  margin-left: 30px;
+  margin-left: 655px;
   /* border-style: none; */
 }
 #profile_wrap .profile_box1 {
   padding: 30px;
-  border: 1px solid #555;
+  /* border: 1px solid #555; */
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  position: relative;
+  margin: 0 auto;
 }
 
-#profile_wrap .profile_box1 .photo img {
+/* #profile_wrap .profile_box1 .photo img {
   width: 130px;
   height: 130px;
-}
+} */
 #profile_wrap .profile_box1 .right {
-  margin: 0 auto;
-  font-size: 10px;
+  font-size: 30px;
+  /* display: flex; */
 }
 #profile_wrap .profile_box1 .right h1 {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-size: 30px;
 }
 #profile_wrap .profile_box1 .right p {
@@ -54,8 +54,24 @@ header > h2 {
   width: 360px;
   height: 160px;
   resize: none;
+  background-color: aliceblue;
+  text-align: center;
 }
 
-#text {
-  font-size: 40px;
+#nicknames {
+  display: flex;
+  margin-top: 15px;
+}
+
+#nickname p {
+  text-align: center;
+}
+
+#myupdateBtn {
+  width: 100px;
+  margin-left: 120px;
+}
+
+#loginid {
+  display: flex;
 }

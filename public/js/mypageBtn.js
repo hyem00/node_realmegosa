@@ -11,14 +11,14 @@ function mypagePost() {
     .then((data) => {
       let rows = data;
       $("#profile_wrap").empty();
+      let login_id = rows.User.login_id;
       let nickname = rows.nickname;
       let comment = rows.comment;
       let image_url = rows.image_url;
       let temp_html = `
         <div class="profile_box1">
             <div class="right">
-              <div class="loginId">아이디
-                <div>${nickname}</div>
+          
               </div >
               <div class="mynickname">닉네임
                 <input name="nickname" id = "nicknamedy" value="${nickname}">
@@ -31,5 +31,4 @@ function mypagePost() {
       $("#profile_wrap").append(temp_html);
     });
 }
-
 mypagePost();
