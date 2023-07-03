@@ -25,7 +25,6 @@ router.get("/posts", async (req, res) => {
     });
   } else {
     return res.status(200).json({ message: "성공하였습니다." });
-
   }
 });
 // 게시글 상세 조회
@@ -65,7 +64,7 @@ router.post(
       nickname: user.nickname,
       pimage_url: imageUrl,
     });
-    return res.status(201).json(post);
+    return res.redirect("/main");
   }
 );
 // 게시글 수정
@@ -163,5 +162,4 @@ router.get("/:post_id", authMiddleware, async (req, res) => {
     });
   }
 });
-
 module.exports = router;

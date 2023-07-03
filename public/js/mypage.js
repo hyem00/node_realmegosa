@@ -12,6 +12,7 @@ function mypage() {
     .then((data) => {
       let rows = data;
       $("#profile_wrap").empty();
+      let login_id = rows.User.login_id;
       let nickname = rows.nickname;
       let comment = rows.comment;
       let image_url = rows.image_url;
@@ -19,8 +20,8 @@ function mypage() {
       <div class="profile_box1">
         <div type="file" id="image" name="image" accept="image/*" alt="이미지 파일 없음"></div>
         <div class="right">
-          아이디 : <h1>id불러와야함 ㄱㄷ</h1>
-          닉네임 : <p>${nickname}</p>
+         <div>아이디 : ${login_id} </div>
+         <div id = "nicknames">닉네임 : ${nickname} </div> 
         </div>
       </div>
       <div class="commenttext" id="commenttext">${comment}</div>
@@ -59,4 +60,3 @@ function mypage() {
 }
 
 mypage();
-

@@ -12,7 +12,7 @@ function postUpdate() {
       if (res.errorMessage === "해당 권한이 없습니다") {
         alert("해당 권한이 없습니다");
         location.href = `http://localhost:8000/posts/?post_id=${postId}`;
-      } else if (res.errorMessage === "로그인 후 이용 가능한 기능입니다.") {
+      } else if (res.errorMessage === "로그인 후 이용 가능한 기능입니1다.") {
         alert("로그인이 필요한 기능입니다");
         location.href = `http://localhost:8000/posts/?post_id=${postId}`;
       }

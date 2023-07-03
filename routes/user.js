@@ -48,11 +48,11 @@ router.post("/users", async (req, res) => {
     }
     if (user) {
       await Users_profiles.create({
-        user_id : user.user_id,
+        user_id: user.user_id,
         //image_url,
-        nickname : user.nickname,
+        nickname: user.nickname,
         //comment
-      })
+      });
     }
 
     res.status(201).json({ message: "회원가입이 완료되었습니다." });

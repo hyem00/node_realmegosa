@@ -11,6 +11,12 @@ router.get("/myuser", authMiddleware, async (req, res) => {
   // 사용자 테이블과 사용자 정보 테이블에 있는 데이터를 가지고 와야함.
   const user = await Users_profiles.findOne({
     where: { user_id },
+    include: [
+      {
+        model: Users,
+        attributes: ["login_id"],
+      },
+    ],
   });
   if (!user) {
     return res.status(404).json({
@@ -50,7 +56,6 @@ router.get("/posts/myuser", authMiddleware, async (req, res) => {
   }
   return res.status(200).json(userPosts);
 });
-//마이프로필 수정 작성
 router.put("/myuser", authMiddleware, async (req, res) => {
   console.log(req);
   const { user_id } = res.locals.user;
@@ -69,25 +74,6 @@ router.put("/myuser", authMiddleware, async (req, res) => {
     },
     { where: { user_id: user_id } }
   );
-
-// 유저,유저프로필 수정
-router.put("/myuser", authMiddleware, async (req, res) => {
-  console.log(req)
-  const { user_id } = res.locals.user
-  const { nickname, comment } = req.body;
-  
-  await Users_profiles.update(
-    {
-      nickname,
-      comment
-    }
-   ,{ where: { user_id: user_id } });
-  await Users.update(
-    {
-      nickname,
-      comment
-    }
-   ,{ where: { user_id: user_id } });
   return res.status(200).json({
     success: true,
     message: "나의 정보가 수정되었습니다.",

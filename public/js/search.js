@@ -17,7 +17,9 @@ function searchBtn() {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => {return response.json()})
+    .then((response) => {
+      return response.json();
+    })
     .then((data) => {
       let rows = data;
       // 검색어 filtering에 사용할 빈 배열 'array_for_filtering'를 생성합니다.
@@ -27,7 +29,7 @@ function searchBtn() {
       // HTML에서 ID가 "search_input"인 요소의 값을 가져와서 'search_string' 변수에 할당합니다.
       // 이는 사용자가 입력한 검색어를 나타냅니다.
       let search_string = document.querySelector("#bbisearch").value;
-      console.log(search_string)
+      console.log(search_string);
       // 검색어를 소문자로 변환하여 'lower_search' 변수에 할당합니다.
       let lower_search = search_string.toLowerCase();
 
